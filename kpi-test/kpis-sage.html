@@ -1,0 +1,195 @@
+<!doctype html>
+<html><head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Qlik Sense Mashup</title>
+	<meta charset="utf-8">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="cleartype" content="on">
+	<!-- Fonte Rawline-->
+	<link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+	<!-- Fonte Raleway-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
+	<!-- Fontawesome-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Qlik -->
+
+	<!-- Design System de Governo-->
+	<link rel="stylesheet" href="../assets/dsgov/dist/dsgov.css.map">
+	<!-- Fonte Rawline-->
+	<link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+	<!-- Project code -->
+	<link rel="stylesheet" href="kpis-sage.css">
+</head>
+
+<body>
+
+	<div class="template-base">
+
+		<div class="container-fluid">
+			<div class="main-content" id="main-content">
+			
+				<p class="h2">Números em destaque</p>
+				
+				<!-- A .qvplaceholder will become a droppable area in the dev-hub -->
+				<!-- Each .qvplaceholder must have a unique id -->
+				<!-- These .qvplaceholder objects below have an extra class, .kpi, which applies some simple styles intended
+				for kpi objects -->
+				
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+					
+						<div class="kpi qvobject" id="KPI-01"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-02"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-03"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-04"></div>
+					</div>
+				</div>
+				
+				<p class="h3">Representação de outliers</p>
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-05"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-06"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi kpi-outlier qvobject" id="KPI-07"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-08"></div>
+					</div>
+				</div>
+				
+				
+				<p class="h3">Representação de incertezas</p>
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi kpi-uncertainty qvobject" id="KPI-09"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi kpi-uncertainty qvplaceholder" id="KPI-10"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvplaceholder" id="KPI-11"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvplaceholder" id="KPI-12"></div>
+					</div>
+				</div>
+				
+				<p class="h3">Representação de agrupamentos</p>
+				
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+						<div class="row kpi-group">
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<div class="kpi qvobject" id="KPI-13"></div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<div class="kpi qvobject" id="KPI-14"></div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<div class="kpi qvobject" id="KPI-15"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-3">
+						<div class="kpi qvobject" id="KPI-16"></div>
+					</div>
+				</div>
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-12 col-md-6">
+						<div class="row kpi-group">
+							<div class="col-xs-12 col-sm-6">
+								<div class="kpi qvobject" id="KPI-17"></div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="kpi qvobject" id="KPI-18"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6">
+						<div class="row kpi-group">
+							<div class="col-xs-12 col-sm-6">
+								<div class="kpi qvobject" id="KPI-19"></div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="kpi qvobject" id="KPI-20"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				
+				<p class="h3">Representação de polaridade</p>
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-21"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-22"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi pink qvobject" id="KPI-23"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi kpi-outlier green qvobject" id="KPI-24"></div>
+					</div>
+				</div>
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi pink qvobject" id="KPI-25"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi kpi-outlier pink qvobject" id="KPI-26"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi green qvobject" id="KPI-27"></div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="kpi qvobject" id="KPI-28"></div>
+					</div>
+				</div>
+				
+				<p class="h3">Representação com pictogramas</p>
+				
+				<div class="row kpi-row">
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="kpi-group">
+							<div class="kpi-side"><i class="fas fa-user-md" aria-hidden="true"></i></div>
+							<div class="kpi-with-icon">
+								<div class="kpi qvobject" id="KPI-29"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="kpi-group">
+							<div class="kpi-side"><i class="fas fa-ambulance" aria-hidden="true"></i></div>
+							<div class="kpi-with-icon">
+								<div class="kpi qvobject" id="KPI-30"></div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="kpi qvplaceholder" id="KPI-31"></div>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+</body></html>

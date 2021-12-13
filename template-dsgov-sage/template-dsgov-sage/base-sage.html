@@ -1,0 +1,1486 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SAGE</title>
+    <!-- Fonte Rawline-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <!-- Fonte Raleway-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="assets/dsgov/dsgov.css" />
+    <!-- Fontawesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      .ds-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .br-card {
+        position: relative;
+      }
+
+      .ds-card-badge {
+        content: "novo";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding: 8px 16px;
+        background: #86c7bd;
+        color: white;
+        z-index: 1;
+      }
+
+      .ds-title-green {
+        font-weight: bold;
+        color: #36a191;
+      }
+
+      .ds-card-icon {
+        font-size: 64px;
+      }
+
+      .ds-news .br-card {
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="template-base">
+      <nav id="skip-links">
+        <div class="skip-links">
+          <a accesskey="1" href="#main-content"
+            >Ir para o Conteúdo<strong class="accesskey">1</strong></a
+          ><a accesskey="2" href="#navigation"
+            >Ir para para Navegação<strong class="accesskey">2</strong></a
+          ><a accesskey="3" href="#main-searchbox"
+            >Ir para para Busca<strong class="accesskey">3</strong></a
+          >
+        </div>
+      </nav>
+      <header class="br-header" id="header" data-sticky="data-sticky">
+        <div class="container-fluid">
+          <div class="header-top">
+            <div class="header-logo">
+              <img src="assets/img/SAGE-logo-color.svg" alt="logo" /><span
+                class="br-divider vertical mx-half mx-sm-1"
+              ></span>
+              <div class="header-sign">
+                Ministério da Saúde <br />Governo Federal
+              </div>
+            </div>
+            <div class="header-actions">
+              <div class="header-links dropdown">
+                <button
+                  class="br-button circle small"
+                  type="button"
+                  data-toggle="dropdown"
+                  aria-label="Abrir Acesso Rápido"
+                >
+                  <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                </button>
+                <div class="br-list">
+                  <div class="header">
+                    <div class="title">Acesso Rápido</div>
+                  </div>
+                  <a
+                    class="br-item"
+                    href="https://www.gov.br/saude/pt-br"
+                    target="_blank"
+                    >Ministério da Saúde</a
+                  ><a
+                    class="br-item"
+                    href="https://datasus.saude.gov.br/"
+                    target="_blank"
+                    >DATASUS-TABNET</a
+                  >
+                </div>
+              </div>
+              <span class="br-divider vertical mx-half mx-sm-1"></span>
+              <div class="header-functions dropdown">
+                <!--<button class="br-button circle small" type="button" data-toggle="dropdown" aria-label="Abrir Funcionalidades do Sistema">
+                            <i class="fas fa-th" aria-hidden="true"></i>
+                        </button>-->
+                <div class="br-list">
+                  <!--<div class="align-items-center br-item">
+                                <button class="br-button circle small" type="button" aria-label="Funcionalidade 1">
+                                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="text">Funcionalidade 1</span>
+                                </button>
+                            </div>
+                            <div class="align-items-center br-item">
+                                <button class="br-button circle small" type="button" aria-label="Funcionalidade 2">
+                                    <i class="fas fa-headset" aria-hidden="true"></i><span class="text">Funcionalidade 2</span>
+                                </button>
+                            </div>-->
+                  <div class="align-items-center br-item">
+                    <button
+                      class="br-button circle small"
+                      type="button"
+                      aria-label="Fale Conosco"
+                    >
+                      <i class="fas fa-comment" aria-hidden="true"></i
+                      ><span class="text">Fale Conosco</span>
+                    </button>
+                  </div>
+                  <!--<div class="align-items-center br-item">
+                                <button class="br-button circle small" type="button" aria-label="Funcionalidade 4">
+                                    <i class="fas fa-adjust" aria-hidden="true"></i><span class="text">Funcionalidade 4</span>
+                                </button>
+                            </div>-->
+                </div>
+              </div>
+              <div class="header-search-trigger">
+                <button
+                  class="br-button circle"
+                  type="button"
+                  aria-label="Abrir Busca"
+                  data-toggle="search"
+                  data-target=".header-search"
+                >
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="header-bottom">
+            <div class="header-menu">
+              <div class="header-menu-trigger">
+                <button
+                  class="d-lg-none br-button small circle"
+                  type="button"
+                  aria-label="Menu"
+                  data-toggle="menu"
+                  data-target="#main-navigation"
+                  id="navigation"
+                >
+                  <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="header-info">
+                <div class="header-title">
+                  Sala de Apoio à Gestão Estratégica
+                </div>
+                <!--<div class="header-subtitle">Subtítulo do Header</div>-->
+              </div>
+            </div>
+            <div class="header-search">
+              <div class="br-input input-button input-highlight">
+                <label class="sr-only" for="searchbox-3081"
+                  >Texto da pesquisa</label
+                >
+                <input
+                  id="searchbox-3081"
+                  type="search"
+                  placeholder="O que você procura?"
+                />
+                <button class="br-button" type="button" aria-label="Buscar">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+              <button
+                class="br-button circle search-close ml-1"
+                type="button"
+                aria-label="Fechar Busca"
+                data-dismiss="search"
+              >
+                <i class="fas fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="d-flex flex-fill" id="main">
+        <div class="container-fluid d-flex">
+          <div class="row">
+            <div class="br-menu push active" id="main-navigation">
+              <div class="menu-container">
+                <div class="menu-panel">
+                  <div class="menu-header">
+                    <div class="menu-title">
+                      <img
+                        src="assets/img/SAGE-logo-color.svg"
+                        alt="Imagem ilustrativa"
+                      /><span>Identificação do site ou Sistema</span>
+                    </div>
+                    <div class="menu-close">
+                      <button
+                        class="br-button circle"
+                        type="button"
+                        aria-label="Fechar o menu"
+                        data-dismiss="menu"
+                      >
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <nav class="menu-body">
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="icon"
+                          ><i class="fas fa-home" aria-hidden="true"></i></span
+                        ><span class="content">Início</span></a
+                      ><span class="br-divider"></span>
+                    </div>
+
+                    <div class="menu-folder">
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="icon"
+                          ><i
+                            class="fas fa-drafting-compass"
+                            aria-hidden="true"
+                          ></i></span
+                        ><span class="content"
+                          >Instrumentos de Planejamento e Gestão</span
+                        ></a
+                      >
+                      <ul>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-chart-bar"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content">Indicadores</span></a
+                          >
+                        </li>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-book-medical"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content"
+                              >Plano nacional de saúde</span
+                            ></a
+                          >
+                        </li>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-book-medical"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content"
+                              >Planos estaduais de saúde</span
+                            ></a
+                          >
+                        </li>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-book-medical"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content"
+                              >Planos municipais de saúde</span
+                            ></a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="menu-folder">
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="icon"
+                          ><i
+                            class="fas fa-heartbeat"
+                            aria-hidden="true"
+                          ></i></span
+                        ><span class="content">Situação de saúde</span></a
+                      >
+                      <ul>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-virus"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content"
+                              >Dados epidemiológicos gerais</span
+                            ></a
+                          >
+                        </li>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-head-side-mask"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content">Doenças e agravos</span></a
+                          >
+                        </li>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-smoking"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content"
+                              >Fatores de risco à saúde</span
+                            ></a
+                          >
+                        </li>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-house-user"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content"
+                              >Dados demográficos e socioeconômicos</span
+                            ></a
+                          >
+                          <ul>
+                            <li>
+                              <a class="menu-item" href="javascript: void(0)"
+                                ><span class="icon"
+                                  ><i
+                                    class="fas fa-users"
+                                    aria-hidden="true"
+                                  ></i></span
+                                ><span class="content">População</span></a
+                              >
+                            </li>
+                            <li>
+                              <a class="menu-item" href="javascript: void(0)"
+                                ><span class="icon"
+                                  ><i
+                                    class="fas fa-briefcase"
+                                    aria-hidden="true"
+                                  ></i></span
+                                ><span class="content"
+                                  >Trabalho e renda</span
+                                ></a
+                              >
+                            </li>
+                            <li>
+                              <a class="menu-item" href="javascript: void(0)"
+                                ><span class="icon"
+                                  ><i
+                                    class="fas fa-book-reader"
+                                    aria-hidden="true"
+                                  ></i></span
+                                ><span class="content">Educação</span></a
+                              >
+                            </li>
+                            <li>
+                              <a class="menu-item" href="javascript: void(0)"
+                                ><span class="icon"
+                                  ><i
+                                    class="fas fa-coins"
+                                    aria-hidden="true"
+                                  ></i></span
+                                ><span class="content">Economia</span></a
+                              >
+                            </li>
+                            <li>
+                              <a class="menu-item" href="javascript: void(0)"
+                                ><span class="icon"
+                                  ><i
+                                    class="fas fa-hand-holding-water"
+                                    aria-hidden="true"
+                                  ></i></span
+                                ><span class="content"
+                                  >Saneamento e meio ambiente</span
+                                ></a
+                              >
+                            </li>
+                            <li>
+                              <a class="menu-item" href="javascript: void(0)"
+                                ><span class="icon"
+                                  ><i
+                                    class="fas fa-map-marker-alt"
+                                    aria-hidden="true"
+                                  ></i></span
+                                ><span class="content"
+                                  >Território geográfico</span
+                                ></a
+                              >
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="icon"
+                          ><i
+                            class="fas fa-hospital-alt"
+                            aria-hidden="true"
+                          ></i></span
+                        ><span class="content"
+                          >Infraestrutura, profissionais e atendimentos</span
+                        ></a
+                      ><span class="br-divider"></span>
+                    </div>
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="icon"
+                          ><i
+                            class="fas fa-hand-holding-usd"
+                            aria-hidden="true"
+                          ></i></span
+                        ><span class="content"
+                          >Orçamentos e recursos finaceiros</span
+                        ></a
+                      ><span class="br-divider"></span>
+                    </div>
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="icon"
+                          ><img
+                            src="assets/img/icone-rede-16.svg"
+                            alt="icone" /></span
+                        ><span class="content">Rede de atenção à saúde</span></a
+                      ><span class="br-divider"></span>
+                    </div>
+                    <div class="menu-folder">
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="icon"
+                          ><i
+                            class="fas fa-landmark"
+                            aria-hidden="true"
+                          ></i></span
+                        ><span class="content"
+                          >Políticas, programas e ações</span
+                        ></a
+                      >
+                      <ul>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-hand-holding-medical"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content">Políticas de saúde</span></a
+                          >
+                        </li>
+                        <li>
+                          <a class="menu-item" href="javascript: void(0)"
+                            ><span class="icon"
+                              ><i
+                                class="fas fa-briefcase-medical"
+                                aria-hidden="true"
+                              ></i></span
+                            ><span class="content"
+                              >Estratégias, programas e ações</span
+                            ></a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="content"
+                          >Ferramenta de análise de dados</span
+                        ></a
+                      ><span class="br-divider"></span>
+                    </div>
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="content">Notícias</span></a
+                      ><span class="br-divider"></span>
+                    </div>
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="content">Dados abertos</span></a
+                      ><span class="br-divider"></span>
+                    </div>
+                    <div>
+                      <a class="menu-item" href="javascript: void(0)"
+                        ><span class="content">Perguntas frequentes</span></a
+                      ><span class="br-divider"></span>
+                    </div>
+                  </nav>
+                  <div class="menu-footer d-sm-none">
+                    <div class="menu-logos">
+                      <img
+                        src="data:image/png;base64,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"
+                        alt="Imagem ilustrativa"
+                      /><img
+                        src="data:image/png;base64,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"
+                        alt="Imagem ilustrativa"
+                      />
+                    </div>
+                    <div class="menu-links">
+                      <a href="javascript: void(0)"
+                        ><span class="mr-1">Link externo 1</span
+                        ><i
+                          class="fas fa-external-link-square-alt"
+                          aria-hidden="true"
+                        ></i></a
+                      ><a href="javascript: void(0)"
+                        ><span class="mr-1">Link externo 2</span
+                        ><i
+                          class="fas fa-external-link-square-alt"
+                          aria-hidden="true"
+                        ></i
+                      ></a>
+                    </div>
+                    <div class="menu-social">
+                      <div class="text-semi-bold mb-1">Redes Sociais</div>
+                      <div class="sharegroup">
+                        <div class="share">
+                          <a
+                            class="br-button circle"
+                            href="javascript: void(0)"
+                            aria-label="Compartilhar por Facebook"
+                            ><i class="fab fa-facebook-f" aria-hidden="true"></i
+                          ></a>
+                        </div>
+                        <div class="share">
+                          <a
+                            class="br-button circle"
+                            href="javascript: void(0)"
+                            aria-label="Compartilhar por Twitter"
+                            ><i class="fab fa-twitter" aria-hidden="true"></i
+                          ></a>
+                        </div>
+                        <div class="share">
+                          <a
+                            class="br-button circle"
+                            href="javascript: void(0)"
+                            aria-label="Compartilhar por Linkedin"
+                            ><i
+                              class="fab fa-linkedin-in"
+                              aria-hidden="true"
+                            ></i
+                          ></a>
+                        </div>
+                        <div class="share">
+                          <a
+                            class="br-button circle"
+                            href="javascript: void(0)"
+                            aria-label="Compartilhar por Whatsapp"
+                            ><i class="fab fa-whatsapp" aria-hidden="true"></i
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="menu-info">
+                      <div class="text-center text-down-01">
+                        Todo o conteúdo deste site está publicado sob a licença
+                        <strong
+                          >Creative Commons Atribuição-SemDerivações 3.0</strong
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="menu-scrim" data-dismiss="menu" tabindex="0"></div>
+              </div>
+            </div>
+            <div class="col pt-3 pb-5">
+              <div class="br-breadcrumb">
+                <ul class="crumb-list">
+                  <li class="crumb home">
+                    <div class="br-button circle">
+                      <span class="sr-only">Página inicial</span
+                      ><i class="icon fas fa-home"></i>
+                    </div>
+                  </li>
+                  <li class="crumb" data-active="active">
+                    <i class="icon fas fa-chevron-right"></i
+                    ><span>Tela Atual</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="main-content pl-sm-3" id="main-content">
+                <p class="h2">Template básico</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Laboriosam consequuntur ratione suscipit voluptatem
+                  reprehenderit aut recusandae autem voluptas quo nulla tenetur,
+                  quos a dolores enim ad, cum, eius et odio!
+                </p>
+                <!-- News -->
+                <div class="row ds-news">
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-header">
+                        <div class="d-flex align-items-center">
+                          <p class="my-auto">Título Exemplo</p>
+                          <a
+                            class="br-button circle ml-auto"
+                            type="button"
+                            aria-label="Ícone ilustrativo"
+                          >
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="card-content">
+                        <p class="h4 ds-title-green">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-header">
+                        <div class="d-flex align-items-center">
+                          <p class="my-auto">Título Exemplo</p>
+                          <a
+                            class="br-button circle ml-auto"
+                            type="button"
+                            aria-label="Ícone ilustrativo"
+                          >
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="card-content">
+                        <p class="h4 ds-title-green">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-header">
+                        <div class="d-flex align-items-center">
+                          <p class="my-auto">Título Exemplo</p>
+                          <a
+                            class="br-button circle ml-auto"
+                            type="button"
+                            aria-label="Ícone ilustrativo"
+                          >
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="card-content">
+                        <p class="h4 ds-title-green">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Novo -->
+                <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-header">
+                        <div class="ml-3">
+                          <p class="h6 mt-3 text-primary-default mb-0">
+                            Título Exemplo
+                          </p>
+                        </div>
+                      </div>
+                      <div class="card-content">
+                        <img
+                          width="100%"
+                          class="mx-auto d-block ds-image"
+                          src="./assets/img/grafico-bivariado-linha-coluna.svg"
+                          src="Grafico Combinado de Linha e Coluna"
+                        />
+                        <p class="mx-3">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Praesent elementum rutrum turpis sed accumsan.
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex">
+                          <a
+                            class="br-button circle ml-auto"
+                            type="button"
+                            aria-label="Ícone ilustrativo"
+                          >
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <span class="ds-card-badge">novo</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-header">
+                        <div class="ml-3">
+                          <p class="h6 mt-3 text-primary-default mb-0">
+                            Título Exemplo
+                          </p>
+                        </div>
+                      </div>
+                      <div class="card-content">
+                        <img
+                          width="100%"
+                          class="mx-auto d-block ds-image"
+                          src="./assets/img/grafico-bivariado-linha-coluna.svg"
+                          src="Grafico Combinado de Linha e Coluna"
+                        />
+                        <p class="mx-3">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Praesent elementum rutrum turpis sed accumsan.
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex">
+                          <a
+                            class="br-button circle ml-auto"
+                            type="button"
+                            aria-label="Ícone ilustrativo"
+                          >
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <span class="ds-card-badge">novo</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-header">
+                        <div class="ml-3">
+                          <p class="h6 mt-3 text-primary-default mb-0">
+                            Título Exemplo
+                          </p>
+                        </div>
+                      </div>
+                      <div class="card-content">
+                        <img
+                          width="100%"
+                          class="mx-auto d-block ds-image"
+                          src="./assets/img/grafico-bivariado-linha-coluna.svg"
+                          src="Grafico Combinado de Linha e Coluna"
+                        />
+                        <p class="mx-3">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Praesent elementum rutrum turpis sed accumsan.
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <div class="d-flex">
+                          <a
+                            class="br-button circle ml-auto"
+                            type="button"
+                            aria-label="Ícone ilustrativo"
+                          >
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Pictograma -->
+                <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-content">
+                        <div class="d-flex align-items-center">
+                          <i
+                            class="fas fa-heartbeat fa-4x text-primary-default"
+                            aria-hidden="true"
+                          ></i>
+                          <p class="h6 ml-2">Título de Exemplo</p>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <p class="mx-3">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-content">
+                        <div class="d-flex align-items-center">
+                          <i
+                            class="
+                              fas
+                              fa-file-medical fa-4x
+                              text-primary-default
+                            "
+                            aria-hidden="true"
+                          ></i>
+                          <p class="h6 ml-2">Título de Exemplo</p>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <p class="mx-3">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="br-card">
+                      <div class="card-content">
+                        <div class="d-flex align-items-center">
+                          <i
+                            class="fas fa-heartbeat fa-4x text-primary-default"
+                            aria-hidden="true"
+                          ></i>
+                          <p class="h6 ml-2">Título de Exemplo</p>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <p class="mx-3">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Grafico de Colunas e Linhas -->
+                <div class="col-md-12">
+                  <div class="br-card">
+                    <div class="card-header">
+                      <div class="ml-3">
+                        <p class="h5 text-primary-default mb-0">
+                          Casos de AIDS identificados no Brasil
+                        </p>
+                        <span>Por ano</span>
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <div id="chart-clean"></div>
+                      <span class="mx-3">
+                        Fonte: MS/SVS/Departamento de Doenças de Condições
+                        Crônicas e Infecções Sexualmente Transmissíveis (DCCI).
+                      </span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex justify-content-between">
+                        <a class="br-button" href="#">
+                          <span class="content">
+                            <i
+                              class="fas fa-info-circle"
+                              aria-hidden="true"
+                            ></i>
+                            Fontes
+                          </span>
+                        </a>
+                        <a class="br-button" href="#">
+                          <span class="content">
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                            Compartilhar
+                          </span>
+                        </a>
+                        <a class="br-button" href="#">
+                          <span class="content">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            Baixar Dados
+                          </span>
+                        </a>
+                        <a class="br-button" href="#">
+                          <span class="content">
+                            <i class="fas fa-table" aria-hidden="true"></i>
+                            Tabela
+                          </span>
+                        </a>
+                        <a class="br-button" href="#">
+                          <span class="content">
+                            <i class="far fa-comment" aria-hidden="true"></i>
+                            Feedback
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Grafico de Pizza -->
+                <div class="col-md-7">
+                  <div class="br-card">
+                    <div class="card-header">
+                      <div class="ml-3">
+                        <p class="h5 text-primary-default mb-0">
+                          Casos de AIDS identificados no Brasil
+                        </p>
+                        <span>Por ano</span>
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <div id="chart-pie-clean"></div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex justify-content-between">
+                        <a
+                          class="br-button flex-column"
+                          style="max-width: 90px"
+                          href="#"
+                        >
+                          <span class="content">
+                            <i
+                              class="fas fa-info-circle"
+                              aria-hidden="true"
+                            ></i>
+                          </span>
+                          <span style="font-size: 10px">Fontes</span>
+                        </a>
+                        <a
+                          class="br-button flex-column"
+                          style="max-width: 90px"
+                          href="#"
+                        >
+                          <span class="content">
+                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                          </span>
+                          <span style="font-size: 10px">Compartilhar</span>
+                        </a>
+                        <a
+                          class="br-button flex-column"
+                          style="max-width: 90px"
+                          href="#"
+                        >
+                          <span class="content">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                          </span>
+                          <span style="font-size: 10px">Baixar Dados</span>
+                        </a>
+                        <a
+                          class="br-button flex-column"
+                          style="max-width: 90px"
+                          href="#"
+                        >
+                          <span class="content">
+                            <i class="fas fa-table" aria-hidden="true"></i>
+                          </span>
+                          <span style="font-size: 10px">Tabela</span>
+                        </a>
+                        <a
+                          class="br-button flex-column"
+                          style="max-width: 90px"
+                          href="#"
+                        >
+                          <span class="content">
+                            <i class="far fa-comment" aria-hidden="true"></i>
+                          </span>
+                          <span style="font-size: 10px">Feedback</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="br-footer" id="footer">
+        <div class="container-fluid">
+          <img
+            src="assets/img/SAGE-logo-white.svg"
+            class="my-4"
+            style="height: 40px"
+            alt="logo"
+          />
+          <div class="br-list horizontal unique">
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Instrumentos de Planejamento e Gestão
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Indicadores</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Planos de saúde</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Situação de saúde
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content mr-1 text-bold text-uppercase">
+                  Infraestrutura, profissionais e atendimentos
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Orçamentos e recursos financeiros
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Rede de atenção à saúde
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Canais de atendimento
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Políticas, programas e ações
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Ferramentas de análise de dados
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+            <div class="col-2 mt-2">
+              <a class="item" href="javascript:void(0);" link>
+                <div class="content text-bold text-uppercase">
+                  Institucional
+                </div>
+                <div class="support"></div
+              ></a>
+              <div class="br-list">
+                <a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                ><a class="item" href="javascript:void(0);" link>
+                  <div class="content">Item da Lista</div></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="text-down-01 text-medium py-3">
+            Texto destinado a exibição de informações relacionadas
+            à&nbsp;<strong>licença de uso.</strong>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      const line = [
+        1,
+        null,
+        4,
+        30,
+        93,
+        407,
+        785,
+        1899,
+        3133,
+        4949,
+        6561,
+        9208,
+        12086,
+        14256,
+        15121,
+        16912,
+        20138,
+        22287,
+        27330,
+        24981,
+        23971,
+        24441,
+        24520,
+        24312,
+        26361,
+        29452,
+        27750,
+        22869,
+        27552,
+        29928,
+        30655,
+        35906,
+        34051,
+        34427,
+        32854,
+        31089,
+        29961,
+        33356,
+        27204,
+        25110,
+        8431,
+      ];
+      const column = [
+        1,
+        null,
+        17,
+        42,
+        134,
+        534,
+        1120,
+        2703,
+        4348,
+        6008,
+        8650,
+        11517,
+        14237,
+        16413,
+        18028,
+        20811,
+        23670,
+        25954,
+        28838,
+        26514,
+        36483,
+        34942,
+        39398,
+        38185,
+        38355,
+        38230,
+        37643,
+        38712,
+        41225,
+        41192,
+        40775,
+        42772,
+        42480,
+        43368,
+        42135,
+        40995,
+        39425,
+        38535,
+        38040,
+        37308,
+        11880,
+      ];
+      const datas = [
+        1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991,
+        1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+        2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
+        2016, 2017, 2018, 2019, 2020,
+      ].map((date) => new Date(date, 0, 1).getTime());
+      const missing = datas[1];
+
+      const predef = {
+        type: "line",
+        stacked: true,
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false,
+        },
+        fontFamily: "Rawline, Arial, sans-serif",
+        defaultLocale: "pt-br",
+        locales: [
+          {
+            name: "pt-br",
+            options: {
+              months: [
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Agosto",
+                "Setembro",
+                "Outubro",
+                "Novembro",
+                "Dezembro",
+              ],
+              shortMonths: [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez",
+              ],
+              days: [
+                "Domingo",
+                "Segunda",
+                "Terça",
+                "Quarta",
+                "Quinta",
+                "Sexta",
+                "Sábado",
+              ],
+              shortDays: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+              toolbar: {
+                exportToSVG: "Baixar SVG",
+                exportToPNG: "Baixar PNG",
+                exportToCSV: "Baixar CSV",
+                menu: "Menu",
+                selection: "Selecionar",
+                selectionZoom: "Selecionar Zoom",
+                zoomIn: "Aumentar",
+                zoomOut: "Diminuir",
+                pan: "Navegação",
+                reset: "Reiniciar Zoom",
+              },
+            },
+          },
+        ],
+      };
+
+      const options_clean = {
+        // Configuração Geral
+        chart: {
+          ...predef,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        grid: {
+          show: true,
+        },
+        markers: {
+          size: 6,
+          strokeWidth: 0,
+        },
+
+        // Configuração mediante a um gráfico
+        plotOptions: {
+          bar: {
+            columnWidth: "80%",
+          },
+        },
+
+        /**
+         * Definição de cores
+         * [0] #86C7BD => Cor da coluna padrão
+         * [1] #2670E8 => Cor da linha padrão
+         */
+        colors: ["#86C7BD", "#2670E8"],
+        series: [
+          {
+            name: "Notificações",
+            type: "column",
+            data: column,
+          },
+          {
+            name: "Diágnosticos",
+            type: "line",
+            data: line,
+          },
+        ],
+
+        /**
+         * Peso da borda
+         * 0 px para colunas
+         * 4 px para linhas
+         */
+        stroke: {
+          width: [0, 4],
+        },
+
+        /**
+         * Gráfico temporal
+         * Definindo eixo x como datetime para aceitar datas
+         */
+        xaxis: {
+          type: "datetime",
+          categories: datas,
+          labels: {
+            formatter: (value) => new Date(value).getFullYear(),
+          },
+        },
+
+        yaxis: [
+          {
+            title: {
+              text: "Notificações",
+            },
+            seriesName: "Notificações",
+          },
+          {
+            opposite: true,
+            title: {
+              text: "Diágnosticos",
+            },
+            seriesName: "Diágnosticos",
+          },
+        ],
+
+        tooltip: {
+          shared: true,
+          x: {
+            show: false,
+          },
+        },
+
+        annotations: {
+          xaxis: [
+            {
+              x: missing,
+              borderColor: "#86C7BD",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#86C7BD",
+                orientation: "horizontal",
+                text: "Dado Faltante",
+              },
+            },
+          ],
+        },
+
+        legend: {
+          offsetY: 10,
+          markers: {
+            width: [16, 24],
+            height: [10, 6],
+            radius: [0, 6],
+          },
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#chart-clean"),
+        options_clean
+      );
+
+      chart.render();
+    </script>
+    <script>
+      const options_clean_pie = {
+        chart: {
+          type: "pie",
+          fontFamily: "Rawline, Arial, sans-serif",
+        },
+        dataLabels: {
+          dropShadow: {
+            enabled: false,
+          },
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: "50%",
+            },
+          },
+        },
+        labels: ["Grupo A", "Grupo B", "Grupo C", "Grupo D"],
+        series: [46, 28, 16, 10],
+        colors: ["#2670E8", "#36A191", "#E368B2", "#FFE066"],
+        legend: {
+          position: "right",
+        },
+      };
+
+      var chart_pie = new ApexCharts(
+        document.querySelector("#chart-pie-clean"),
+        options_clean_pie
+      );
+      chart_pie.render();
+    </script>
+    <script src="assets/dsgov/dsgov.js"></script>
+  </body>
+</html>

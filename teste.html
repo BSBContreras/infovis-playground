@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+
+    const line = [
+      1026,
+      882,
+      1456,
+      1102,
+      913,
+      851,
+      null,
+      982,
+      1069,
+      893,
+      1124,
+      1098
+    ]
+    const column_data = [
+      1462,
+      856,
+      871,
+      879,
+      890,
+      985,
+      994,
+      920,
+      963,
+      null,
+      933,
+      972
+    ]
+    const outlier_index_column = column_data.indexOf(column_data.reduce((acc, cur) => Math.max(acc, cur)))
+    const column = column_data.map((data, index) => index == outlier_index_column ? null : data)
+    const outlier_column = column_data.map((data, index) => index == outlier_index_column ? data : null)
+    const date = [
+      1627786800000,
+      1627873200000,
+      1627959600000,
+      1628046000000,
+      1628132400000,
+      1628218800000,
+      1628305200000,
+      1628391600000,
+      1628478000000,
+      1628564400000,
+      1628650800000,
+      1628737200000
+    ]
+
+    const options = {
+      chart: {
+        type: "line",
+        stacked: true
+      },
+      dataLabels: {
+        enabled: false
+      },
+      colors: ['#99C2A2', '#C5EDAC', '#66C7F4'],
+      series: [
+        
+        {
+          name: 'Column A',
+          type: 'column',
+          data: column
+        },
+        {
+          name: "Column B",
+          type: 'column',
+          data: outlier_column
+        },
+        {
+          name: "Line C",
+          type: 'line',
+          data: line
+        },
+      ],
+      stroke: {
+        width: [0, 0, 4]
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: "80%"
+        }
+      },
+      xaxis: {
+        type: 'datetime',
+        categories: date
+      },
+      yaxis: [
+        {
+          seriesName: 'Line C',
+          axisTicks: {
+            show: true
+          },
+          axisBorder: {
+            show: true,
+          },
+          title: {
+            text: "Columns"
+          }
+        },
+        {
+          seriesName: 'Line C',
+          show: false
+        }, {
+          opposite: true,
+          seriesName: 'Line C',
+          axisTicks: {
+            show: true
+          },
+          axisBorder: {
+            show: true,
+          },
+          title: {
+            text: "Line"
+          }
+        }
+      ],
+      tooltip: {
+        shared: false,
+        intersect: true,
+        x: {
+          show: false
+        }
+      },
+      legend: {
+        horizontalAlign: "left",
+        offsetX: 40
+      }
+    };
+
+    const chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
+
+  </script>
+</body>
+</html>

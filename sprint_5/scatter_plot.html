@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Infovis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet" />
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+    <!-- <script src='script.js'></script> -->
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-clean"></div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-outlier"></div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-missing"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+  
+      const sample_1 = [
+        [5.1, 1.4],
+        [4.9, 1.4],
+        [4.7, 1.3],
+        [4.6, 1.5],
+        [5, 1.4],
+        [5.4, 1.7],
+        [4.6, 1.4],
+        [5, 1.5],
+        [4.4, 1.4],
+        [4.9, 1.5],
+        [5.4, 1.5],
+        [4.8, 1.6],
+        [4.8, 1.4],
+        [4.3, 1.1],
+        [5.8, 1.2],
+        [5.7, 1.5],
+        [5.4, 1.3],
+        [5.1, 1.4],
+        [5.7, 1.7],
+        [5.1, 1.5],
+        [5.4, 1.7],
+        [5.1, 1.5],
+        [4.6, 1],
+        [5.1, 1.7],
+        [4.8, 1.9],
+        [5, 1.6],
+        [5, 1.6],
+        [5.2, 1.5],
+        [5.2, 1.4],
+        [4.7, 1.6],
+        [4.8, 1.6],
+        [5.4, 1.5],
+        [5.2, 1.5],
+        [5.5, 1.4],
+        [4.9, 1.5],
+        [5, 1.2],
+        [5.5, 1.3],
+        [4.9, 1.5],
+        [4.4, 1.3],
+        [5.1, 1.5],
+        [5, 1.3],
+        [4.5, 1.3],
+        [4.4, 1.3],
+        [5, 1.6],
+        [5.1, 1.9],
+        [4.8, 1.4],
+        [5.1, 1.6],
+        [4.6, 1.4],
+        [5.3, 1.5],
+        [5, 1.4],
+      ];
+      const sample_2 = [
+        [7, 4.7],
+        [6.4, 4.5],
+        [6.9, 4.9],
+        [5.5, 4],
+        [6.5, 4.6],
+        [5.7, 4.5],
+        [6.3, 4.7],
+        [4.9, 3.3],
+        [6.6, 4.6],
+        [5.2, 3.9],
+        [5, 3.5],
+        [5.9, 4.2],
+        [6, 4],
+        [6.1, 4.7],
+        [5.6, 3.6],
+        [6.7, 4.4],
+        [5.6, 4.5],
+        [5.8, 4.1],
+        [6.2, 4.5],
+        [5.6, 3.9],
+        [5.9, 4.8],
+        [6.1, 4],
+        [6.3, 4.9],
+        [6.1, 4.7],
+        [6.4, 4.3],
+        [6.6, 4.4],
+        [6.8, 4.8],
+        [6.7, 5],
+        [6, 4.5],
+        [5.7, 3.5],
+        [5.5, 3.8],
+        [5.5, 3.7],
+        [5.8, 3.9],
+        [6, 5.1],
+        [5.4, 4.5],
+        [6, 4.5],
+        [6.7, 4.7],
+        [6.3, 4.4],
+        [5.6, 4.1],
+        [5.5, 4],
+        [5.5, 4.4],
+        [6.1, 4.6],
+        [5.8, 4],
+        [5, 3.3],
+        [5.6, 4.2],
+        [5.7, 4.2],
+        [5.7, 4.2],
+        [6.2, 4.3],
+        [5.1, 3],
+        [5.7, 4.1],
+      ];
+      const sample_3 = [
+        [6.3, 6],
+        [5.8, 5.1],
+        [7.1, 5.9],
+        [6.3, 5.6],
+        [6.5, 5.8],
+        [7.6, 6.6],
+        [4.9, 4.5],
+        [7.3, 6.3],
+        [6.7, 5.8],
+        [7.2, 6.1],
+        [6.5, 5.1],
+        [6.4, 5.3],
+        [6.8, 5.5],
+        [5.7, 5],
+        [5.8, 5.1],
+        [6.4, 5.3],
+        [6.5, 5.5],
+        [7.7, 6.7],
+        [7.7, 6.9],
+        [6, 5],
+        [6.9, 5.7],
+        [5.6, 4.9],
+        [7.7, 6.7],
+        [6.3, 4.9],
+        [6.7, 5.7],
+        [7.2, 6],
+        [6.2, 4.8],
+        [6.1, 4.9],
+        [6.4, 5.6],
+        [7.2, 5.8],
+        [7.4, 6.1],
+        [7.9, 6.4],
+        [6.4, 5.6],
+        [6.3, 5.1],
+        [6.1, 5.6],
+        [7.7, 6.1],
+        [6.3, 5.6],
+        [6.4, 5.5],
+        [6, 4.8],
+        [6.9, 5.4],
+        [6.7, 5.6],
+        [6.9, 5.1],
+        [5.8, 5.1],
+        [6.8, 5.9],
+        [6.7, 5.7],
+        [6.7, 5.2],
+        [6.3, 5],
+        [6.5, 5.2],
+        [6.2, 5.4],
+        [5.9, 5.1],
+      ];
+
+      const CreateToolTip = ({name, x, y, color}) => `
+        <div
+          style="
+            border: 1px solid ${color};
+            border-radius: 8px;
+            font-family: Rawline, Arial, sans-serif;
+            font-size: 12px;
+            background-color: white;
+            width: fit-content;
+          "
+        >
+          <h1 style="
+            background-color: ${color}; 
+            color: white; 
+            margin: 0;
+            padding: 4px;
+            font-size: 16px;
+            border-radius: 8px 8px 0 0;
+          ">${name}</h1>
+          <div style="padding: 8px;">
+            <p style="margin: 0;">SepalLengthCm: <span style="font-weight: 700;">${x}</span></p>
+            <p style="margin: 0;">PetalLengthCm: <span style="font-weight: 700;">${y}</span></p>
+          </div>
+        </div>
+      `;
+
+      const predef = {
+        type: "scatter",
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false,
+        },
+        fontFamily: "Rawline, Arial, sans-serif",
+        defaultLocale: "pt-br",
+        locales: [
+          {
+            name: "pt-br",
+            options: {
+              months: [
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Agosto",
+                "Setembro",
+                "Outubro",
+                "Novembro",
+                "Dezembro",
+              ],
+              shortMonths: [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez",
+              ],
+              days: [
+                "Domingo",
+                "Segunda",
+                "Terça",
+                "Quarta",
+                "Quinta",
+                "Sexta",
+                "Sábado",
+              ],
+              shortDays: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+              toolbar: {
+                exportToSVG: "Baixar SVG",
+                exportToPNG: "Baixar PNG",
+                exportToCSV: "Baixar CSV",
+                menu: "Menu",
+                selection: "Selecionar",
+                selectionZoom: "Selecionar Zoom",
+                zoomIn: "Aumentar",
+                zoomOut: "Diminuir",
+                pan: "Navegação",
+                reset: "Reiniciar Zoom",
+              },
+            },
+          },
+        ],
+      };
+
+      const options_clean = {
+        chart: {
+          ...predef,
+        },
+
+        series: [
+          {
+            name: "Iris-setosa",
+            data: sample_1,
+          },
+          {
+            name: "Iris-versicolor",
+            data: sample_2,
+          },
+          {
+            name: "Iris-virginica",
+            data: sample_3,
+          },
+        ],
+
+        colors: ["#86C7BD", "#2670E8", "#E368B2"],
+
+        xaxis: {
+          tickAmount: 10,
+          title: {
+            text: "SepalLengthCm"
+          },
+          labels: {
+            formatter: function (val) {
+              return parseFloat(val).toFixed(1);
+            },
+          },
+        },
+
+        tooltip: {
+         custom: ({ seriesIndex, dataPointIndex, w: { config } }) => {
+            const {data, name} = config.series[seriesIndex]
+            const [x, y] = data[dataPointIndex]
+            const color = config.colors[seriesIndex]
+            return CreateToolTip({name, x, y, color})
+         }
+        },
+
+        yaxis: {
+          title: {
+            text: "PetalLengthCm"
+          }
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#chart-clean"),
+        options_clean
+      );
+
+      chart.render();
+    </script>
+  </body>
+</html>

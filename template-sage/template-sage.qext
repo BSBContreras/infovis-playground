@@ -1,0 +1,15 @@
+{
+	"type": "mashup",
+	"name": "template-sage",
+	"description": "Template de mashup para SAGE",
+	"homepage": "",
+	"author": "USP, Carta Acordo OPAS: SCON2021-0023",
+	"version": "0.0.0",
+	"preview": "preview.png",
+	"keywords": "qlik-sense, mashup, dashboard, sage",
+	"license": "",
+	"repository": "",
+	"dependencies": {
+		"qlik-sense": ">=1.0.x"
+	}
+}

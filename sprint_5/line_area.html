@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-clean"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-outlier"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-missing"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-area"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    const line = [926, 882, 1056, 1102, 913, 851, 951, 982, 1069, 893, 1124, 1098]
+    const datas = [
+      1627786800000, 1627873200000, 1627959600000, 1628046000000, 
+      1628132400000, 1628218800000, 1628305200000, 1628391600000, 
+      1628478000000, 1628564400000, 1628650800000, 1628737200000
+    ]
+
+    const predef = {
+      type: 'area',
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Rawline, Arial, sans-serif',
+      defaultLocale: 'pt-br',
+      locales: [{
+        "name": "pt-br",
+        "options": {
+          "months": [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+          ],
+          "shortMonths": [
+            "Jan",
+            "Fev",
+            "Mar",
+            "Abr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Set",
+            "Out",
+            "Nov",
+            "Dez"
+          ],
+          "days": [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Sábado"
+          ],
+          "shortDays": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+          "toolbar": {
+            "exportToSVG": "Baixar SVG",
+            "exportToPNG": "Baixar PNG",
+            "exportToCSV": "Baixar CSV",
+            "menu": "Menu",
+            "selection": "Selecionar",
+            "selectionZoom": "Selecionar Zoom",
+            "zoomIn": "Aumentar",
+            "zoomOut": "Diminuir",
+            "pan": "Navegação",
+            "reset": "Reiniciar Zoom"
+          }
+        }
+      }]
+    }
+
+    const options_clean = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+      markers: {
+        size: 6,
+        strokeWidth: 0
+      },
+      plotOptions: {
+        area: {
+          fillTo: 'origin',
+        }
+      },
+
+      /**
+      * Definição de cores
+      * [0] #86C7BD => Cor da linha padrão
+      */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          name: 'Média de 7 dias',
+          type: 'area',
+          data: line
+        }
+      ],
+
+      /**
+      * Peso da borda
+      * 4 px para linhas 
+      */
+      stroke: {
+        width: 4,
+        curve: 'straight'
+      },
+      
+      /**
+      * Gráfico temporal
+      * Definindo eixo x como datetime para aceitar datas
+      */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Média de 7 dias'
+          },
+          seriesName: 'Média de 7 dias',
+        }       
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        }
+      },
+
+      legend: {
+        offsetY: 10,
+        markers: {
+          width: 24,
+          height: 6,
+          radius: 6
+        }
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-clean'), options_clean);
+
+    chart.render();
+  </script>
+  <script>
+    const line_outlier = [926, 882, 1456, 1102, 913, 851, 951, 982, 1069, 893, 1124, 1098]
+
+    const index = line_outlier.indexOf(line_outlier.reduce((acc, cur) => Math.max(acc, cur)))
+
+    const outlierX = datas[index]
+    const outlierY = line_outlier[index]
+
+    const options_outlier = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+      markers: {
+        size: 6,
+        strokeWidth: 0
+      },
+      plotOptions: {
+        area: {
+          fillTo: 'origin',
+        }
+      },
+
+      /**
+       * Definição de cores
+       * [0] #86C7BD => Cor da linha padrão
+       */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          name: 'Média de 7 dias',
+          type: 'area',
+          data: line_outlier
+        }
+      ],
+
+      /**
+      * Peso da borda
+      * 4 px para linhas 
+      */
+      stroke: {
+        width: 4,
+        curve: 'straight'
+      },
+      
+      /**
+      * Gráfico temporal
+      * Definindo eixo x como datetime para aceitar datas
+      */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Média de 7 dias'
+          },
+          seriesName: 'Média de 7 dias',
+        }       
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        }
+      },
+
+      annotations: {
+        points: [
+          {
+            x: outlierX,
+            y: outlierY,
+            marker: {
+              size: 12,
+              fillColor: "transparent",
+              strokeColor: "#86C7BD",
+              strokeWidth: 4,
+              radius: 3
+            },
+          }
+        ]
+      },
+
+      legend: {
+        offsetY: 10,
+        markers: {
+          width: 24,
+          height: 6,
+          radius: 6
+        }
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-outlier'), options_outlier);
+
+    chart.render();
+  </script>
+  <script>
+    const line_missing = [926, 882, 1056, 1102, 913, 851, null, 982, 1069, 893, 1124, 1098]
+
+    const missing = datas[9] // index do missing data
+
+    const options_missing = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+      markers: {
+        size: 6,
+        strokeWidth: 0
+      },   
+      plotOptions: {
+        area: {
+          fillTo: 'origin',
+        }
+      }, 
+
+      /**
+       * Definição de cores
+       * [0] #86C7BD => Cor da linha padrão
+       */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          name: 'Média de 7 dias',
+          type: 'area',
+          data: line_missing
+        }
+      ],
+
+      /**
+       * Peso da borda
+       * 4 px para linhas 
+       */
+      stroke: {
+        width: 4,
+        curve: 'straight'
+      },
+      
+      /**
+       * Gráfico temporal
+       * Definindo eixo x como datetime para aceitar datas
+       */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Média de 7 dias'
+          },
+          seriesName: 'Média de 7 dias',
+        }       
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+
+      legend: {
+        offsetY: 10,
+        markers: {
+          width: 24,
+          height: 6,
+          radius: 6
+        }
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-missing'), options_missing);
+
+    chart.render();
+  </script>
+  <script>
+    const line_area = [926, 882, 1056, 1102, 913, 851, 951, 982, 1069, 1033, 1124, 1098]
+
+    const VALUE = 40
+    const LENGTH = line_area.length
+
+    let line_area_up = line_area.map(() => null)
+    let line_area_down = line_area.map(() => null)
+    let counter = 0
+
+    for(let i = LENGTH / 2; i < LENGTH; i++) {
+      line_area_up[i] = line_area[i] + VALUE * 0.5 * counter
+      line_area_down[i] = line_area[i] - VALUE * 0.5 * counter
+      counter++
+    }
+
+    console.log(line_area_down, line_area_down)
+
+    const options_area = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+      markers: {
+        size: [6, 0, 0],
+        strokeWidth: 0
+      },
+
+      /**
+      * Definição de cores
+      * [0] #86C7BD => Cor da linha padrão
+      */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          name: 'Média de 7 dias',
+          type: 'area',
+          data: line_area
+        },
+        {
+          name: 'Desvio Superior',
+          type: 'area',
+          data: line_area_up
+        },
+        {
+          name: 'Desvio Inferior',
+          type: 'area',
+          data: line_area_down
+        }
+      ],
+
+      /**
+      * Peso da borda
+      * 4 px para linhas 
+      */
+      stroke: {
+        width: [4, 2, 2],
+        dashArray: [0, 4, 4]
+      },
+      
+      /**
+      * Gráfico temporal
+      * Definindo eixo x como datetime para aceitar datas
+      */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Média de 7 dias'
+          },
+          seriesName: 'Média de 7 dias',
+        }       
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        }
+      },
+
+      legend: {
+        offsetY: 10,
+        markers: {
+          width: 24,
+          height: 6,
+          radius: 6
+        }
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-area'), options_area);
+
+    chart.render();
+  </script>
+</body>
+</html>

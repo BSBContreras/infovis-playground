@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-clean"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    const predef = {
+      type: 'pie',
+      fontFamily: 'Rawline, Arial, sans-serif',
+    }
+
+    const options_clean = {
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        dropShadow: {
+          enabled: false
+        }
+      },
+      labels: [
+               'Ensino Médio Completo e Incompleto',
+               'Ensino Fundamental Completo e Incompleto',
+               'Ensino Superior Completo e Incompleto',              
+               'Não Alfabetizado',
+              ],
+      series: [1549, 1543, 724, 85],
+      // colors: ['#C5D4EB', '#5992ED', '#2670E8', '#C72487'],
+      colors: ['#86C7BD', '#36A191', '#29796D', '#C72487'],
+      legend: {
+        position: 'right',
+      }
+    }
+
+    var chart = new ApexCharts(document.querySelector("#chart-clean"), options_clean)
+    chart.render()
+  </script>
+</body>
+</html>

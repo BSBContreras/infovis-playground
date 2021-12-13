@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Rawline-->
+  <link
+      rel="stylesheet"
+      href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+  />
+  <!-- Font Raleway-->
+  <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+  />
+  <!-- DSGOV CSS-->
+  <link
+      rel="stylesheet"
+      href="./assets/dsgov/dist/dsgov.min.css"
+  />
+  <!-- Fontawesome-->
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+  />
+  <style>
+    .ds-container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .br-table tr:hover {
+      background-image: none;
+      background-color: #D7ECE9;
+    }
+
+    .br-table th {
+      color: var(--color-primary-default);
+      background-color: var(--color-secondary-01);
+    }
+
+    .br-table thead {
+      border-top: 1px solid var(--color-secondary-04);
+      border-bottom: 1px solid var(--color-secondary-04);
+    }
+
+    .br-table .ds-table-outlier {
+      font-weight: 700;
+    }
+
+    .br-table .ds-table-missing::before {
+      content: "-";
+    }
+
+    .br-table a {
+      font-weight: 700;
+    }
+
+    .br-table a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+  <title>Table</title>
+</head>
+<body> 
+  <!-- Conteúdo-->
+  <div class="ds-container">
+    <div class="br-table" data-search="data-search" data-selection="data-selection" data-collapse="data-collapse">
+      <div class="table-header">
+        <div class="top-bar">
+          <div class="table-title">Título da Tabela</div>
+          <div class="search-trigger">
+            <button class="br-button circle" type="button" data-toggle="search" aria-label="Abrir busca"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="actions-trigger text-nowrap">
+            <button class="br-button circle" type="button" title="Ver mais opções" data-toggle="dropdown" data-target="target01" aria-label="Ver mais opções"><i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+            <div class="br-list" id="target01" hidden="hidden">
+              <button class="br-item" type="button" data-density="small" aria-label="Densidade alta">Densidade alta
+              </button>
+              <button class="br-item" type="button" data-density="medium" aria-label="Densidade média">Densidade média
+              </button>
+              <button class="br-item" type="button" data-density="large" aria-label="Densidade baixa">Densidade baixa
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="search-bar">
+          <div class="br-input">
+            <label for="table-searchbox-01">Buscar</label>
+            <input id="table-searchbox-01" type="text" placeholder="Buscar na tabela"/>
+            <button class="br-button circle" type="button" aria-label="Buscar"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <button class="br-button circle" type="button" data-dismiss="search" aria-label="Fechar busca"><i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <table>
+        <caption>Título da Tabela</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">100.473,85</td>
+            <td data-th="Título coluna 5">197.475.022</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">28.342,25</td>
+            <td data-th="Título coluna 5">64.324.615</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">372.465,53</td>
+            <td data-th="Título coluna 5">4.639.862</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-footer">
+        <nav class="br-pagination" aria-label="Paginação de resultados" data-total="100" data-current="1" data-per-page="10">
+          <div class="pagination-per-page">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="per-page-selection-random-01">Exibir</label>
+                <input id="per-page-selection-random-01" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-10-random-01" type="radio" name="per-page-random-01" value="per-page-10-random-01" checked="checked"/>
+                    <label for="per-page-10-random-01">10</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-20-random-01" type="radio" name="per-page-random-01" value="per-page-20-random-01"/>
+                    <label for="per-page-20-random-01">20</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-30-random-01" type="radio" name="per-page-random-01" value="per-page-30-random-01"/>
+                    <label for="per-page-30-random-01">30</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-information d-none d-sm-flex"><span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">100</span>&nbsp;itens</div>
+          <div class="pagination-go-to-page d-none d-sm-flex ml-auto">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="go-to-selection-random-01">Página</label>
+                <input id="go-to-selection-random-01" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-1-random-01" type="radio" name="go-to-random-01" value="go-to-1-random-01" checked="checked"/>
+                    <label for="go-to-1-random-01">1</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-2-random-01" type="radio" name="go-to-random-01" value="go-to-2-random-01"/>
+                    <label for="go-to-2-random-01">2</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-3-random-01" type="radio" name="go-to-random-01" value="go-to-3-random-01"/>
+                    <label for="go-to-3-random-01">3</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-arrows ml-auto ml-sm-0">
+            <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="ds-container">
+    <div class="br-table" data-search="data-search" data-selection="data-selection" data-collapse="data-collapse">
+      <div class="table-header">
+        <div class="top-bar">
+          <div class="table-title">Título da Tabela</div>
+          <div class="search-trigger">
+            <button class="br-button circle" type="button" data-toggle="search" aria-label="Abrir busca"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="actions-trigger text-nowrap">
+            <button class="br-button circle" type="button" title="Ver mais opções" data-toggle="dropdown" data-target="target02" aria-label="Ver mais opções"><i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+            <div class="br-list" id="target02" hidden="hidden">
+              <button class="br-item" type="button" data-density="small" aria-label="Densidade alta">Densidade alta
+              </button>
+              <button class="br-item" type="button" data-density="medium" aria-label="Densidade média">Densidade média
+              </button>
+              <button class="br-item" type="button" data-density="large" aria-label="Densidade baixa">Densidade baixa
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="search-bar">
+          <div class="br-input">
+            <label for="table-searchbox-02">Buscar</label>
+            <input id="table-searchbox-02" type="text" placeholder="Buscar na tabela"/>
+            <button class="br-button circle" type="button" aria-label="Buscar"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <button class="br-button circle" type="button" data-dismiss="search" aria-label="Fechar busca"><i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <table>
+        <caption>Título da Tabela</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">100.473,85</td>
+            <td data-th="Título coluna 5">197.475.022</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td class="ds-table-outlier" data-th="Título coluna 4">2,25</td>
+            <td data-th="Título coluna 5">64.324.615</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">372.465,53</td>
+            <td data-th="Título coluna 5">4.639.862</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-footer">
+        <nav class="br-pagination" aria-label="Paginação de resultados" data-total="100" data-current="1" data-per-page="10">
+          <div class="pagination-per-page">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="per-page-selection-random-02">Exibir</label>
+                <input id="per-page-selection-random-02" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-10-random-02" type="radio" name="per-page-random-02" value="per-page-10-random-02" checked="checked"/>
+                    <label for="per-page-10-random-02">10</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-20-random-02" type="radio" name="per-page-random-02" value="per-page-20-random-02"/>
+                    <label for="per-page-20-random-02">20</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-30-random-02" type="radio" name="per-page-random-02" value="per-page-30-random-02"/>
+                    <label for="per-page-30-random-02">30</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-information d-none d-sm-flex"><span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">100</span>&nbsp;itens</div>
+          <div class="pagination-go-to-page d-none d-sm-flex ml-auto">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="go-to-selection-random-02">Página</label>
+                <input id="go-to-selection-random-02" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-1-random-02" type="radio" name="go-to-random-02" value="go-to-1-random-02" checked="checked"/>
+                    <label for="go-to-1-random-02">1</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-2-random-02" type="radio" name="go-to-random-02" value="go-to-2-random-02"/>
+                    <label for="go-to-2-random-02">2</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-3-random-02" type="radio" name="go-to-random-02" value="go-to-3-random-02"/>
+                    <label for="go-to-3-random-02">3</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-arrows ml-auto ml-sm-0">
+            <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="ds-container">
+    <div class="br-table" data-search="data-search" data-selection="data-selection" data-collapse="data-collapse">
+      <div class="table-header">
+        <div class="top-bar">
+          <div class="table-title">Título da Tabela</div>
+          <div class="search-trigger">
+            <button class="br-button circle" type="button" data-toggle="search" aria-label="Abrir busca"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="actions-trigger text-nowrap">
+            <button class="br-button circle" type="button" title="Ver mais opções" data-toggle="dropdown" data-target="target03" aria-label="Ver mais opções"><i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+            <div class="br-list" id="target03" hidden="hidden">
+              <button class="br-item" type="button" data-density="small" aria-label="Densidade alta">Densidade alta
+              </button>
+              <button class="br-item" type="button" data-density="medium" aria-label="Densidade média">Densidade média
+              </button>
+              <button class="br-item" type="button" data-density="large" aria-label="Densidade baixa">Densidade baixa
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="search-bar">
+          <div class="br-input">
+            <label for="table-searchbox-03">Buscar</label>
+            <input id="table-searchbox-03" type="text" placeholder="Buscar na tabela"/>
+            <button class="br-button circle" type="button" aria-label="Buscar"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <button class="br-button circle" type="button" data-dismiss="search" aria-label="Fechar busca"><i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <table>
+        <caption>Título da Tabela</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">100.473,85</td>
+            <td data-th="Título coluna 5">197.475.022</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td class="ds-table-missing" data-th="Título coluna 4"></td>
+            <td data-th="Título coluna 5">64.324.615</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">372.465,53</td>
+            <td data-th="Título coluna 5">4.639.862</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-footer">
+        <nav class="br-pagination" aria-label="Paginação de resultados" data-total="100" data-current="1" data-per-page="10">
+          <div class="pagination-per-page">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="per-page-selection-random-03">Exibir</label>
+                <input id="per-page-selection-random-03" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-10-random-03" type="radio" name="per-page-random-03" value="per-page-10-random-03" checked="checked"/>
+                    <label for="per-page-10-random-03">10</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-20-random-03" type="radio" name="per-page-random-03" value="per-page-20-random-03"/>
+                    <label for="per-page-20-random-03">20</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-30-random-03" type="radio" name="per-page-random-03" value="per-page-30-random-03"/>
+                    <label for="per-page-30-random-03">30</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-information d-none d-sm-flex"><span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">100</span>&nbsp;itens</div>
+          <div class="pagination-go-to-page d-none d-sm-flex ml-auto">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="go-to-selection-random-03">Página</label>
+                <input id="go-to-selection-random-03" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-1-random-03" type="radio" name="go-to-random-03" value="go-to-1-random-03" checked="checked"/>
+                    <label for="go-to-1-random-03">1</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-2-random-03" type="radio" name="go-to-random-03" value="go-to-2-random-03"/>
+                    <label for="go-to-2-random-03">2</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-3-random-03" type="radio" name="go-to-random-03" value="go-to-3-random-03"/>
+                    <label for="go-to-3-random-03">3</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-arrows ml-auto ml-sm-0">
+            <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="ds-container">
+    <div class="br-table" data-search="data-search" data-selection="data-selection" data-collapse="data-collapse">
+      <div class="table-header">
+        <div class="top-bar">
+          <div class="table-title">Título da Tabela</div>
+          <div class="search-trigger">
+            <button class="br-button circle" type="button" data-toggle="search" aria-label="Abrir busca"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="actions-trigger text-nowrap">
+            <button class="br-button circle" type="button" title="Ver mais opções" data-toggle="dropdown" data-target="target04" aria-label="Ver mais opções"><i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+            <div class="br-list" id="target04" hidden="hidden">
+              <button class="br-item" type="button" data-density="small" aria-label="Densidade alta">Densidade alta
+              </button>
+              <button class="br-item" type="button" data-density="medium" aria-label="Densidade média">Densidade média
+              </button>
+              <button class="br-item" type="button" data-density="large" aria-label="Densidade baixa">Densidade baixa
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="search-bar">
+          <div class="br-input">
+            <label for="table-searchbox-04">Buscar</label>
+            <input id="table-searchbox-04" type="text" placeholder="Buscar na tabela"/>
+            <button class="br-button circle" type="button" aria-label="Buscar"><i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <button class="br-button circle" type="button" data-dismiss="search" aria-label="Fechar busca"><i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <table>
+        <caption>Título da Tabela</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+            <th scope="col">Coluna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">100.473,85</td>
+            <td data-th="Título coluna 5"><a href="http://www.gov.br" target="_blank">Acessar Link <i class="fas fa-external-link-alt"></i></a></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td class="ds-table-missing" data-th="Título coluna 4"></td>
+            <td data-th="Título coluna 5"><a href="http://www.gov.br" target="_blank">Acessar Link <i class="fas fa-external-link-alt"></i></a></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td data-th="Título coluna 1">Lorem ipsum Delorium Spert</td>
+            <td data-th="Título coluna 2">0%</td>
+            <td data-th="Título coluna 3">0</td>
+            <td data-th="Título coluna 4">372.465,53</td>
+            <td data-th="Título coluna 5"><a href="http://www.gov.br" target="_blank">Acessar Link <i class="fas fa-external-link-alt"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-footer">
+        <nav class="br-pagination" aria-label="Paginação de resultados" data-total="100" data-current="1" data-per-page="10">
+          <div class="pagination-per-page">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="per-page-selection-random-04">Exibir</label>
+                <input id="per-page-selection-random-04" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-10-random-04" type="radio" name="per-page-random-04" value="per-page-10-random-04" checked="checked"/>
+                    <label for="per-page-10-random-04">10</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-20-random-04" type="radio" name="per-page-random-04" value="per-page-20-random-04"/>
+                    <label for="per-page-20-random-04">20</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="per-page-30-random-04" type="radio" name="per-page-random-04" value="per-page-30-random-04"/>
+                    <label for="per-page-30-random-04">30</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-information d-none d-sm-flex"><span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">100</span>&nbsp;itens</div>
+          <div class="pagination-go-to-page d-none d-sm-flex ml-auto">
+            <div class="br-select">
+              <div class="br-input">
+                <label for="go-to-selection-random-04">Página</label>
+                <input id="go-to-selection-random-04" type="text" placeholder=" "/>
+                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="br-list" tabindex="0">
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-1-random-04" type="radio" name="go-to-random-04" value="go-to-1-random-04" checked="checked"/>
+                    <label for="go-to-1-random-04">1</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-2-random-04" type="radio" name="go-to-random-04" value="go-to-2-random-04"/>
+                    <label for="go-to-2-random-04">2</label>
+                  </div>
+                </div>
+                <div class="br-item" tabindex="-1">
+                  <div class="br-radio">
+                    <input id="go-to-3-random-04" type="radio" name="go-to-random-04" value="go-to-3-random-04"/>
+                    <label for="go-to-3-random-04">3</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><span class="br-divider d-none d-sm-block mx-3"></span>
+          <div class="pagination-arrows ml-auto ml-sm-0">
+            <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scripts de componentes -->
+  <script src="./assets/dsgov/dist/dsgov.min.js"></script>
+</body>
+</html>

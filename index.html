@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+  <div style="display: flex;">
+    <div style="height: 50%; width: 50%;" id="chart1"></div>
+    <div style="height: 50%; width: 50%;" id="chart2"></div>
+  </div>
+  <div style="cursor: pointer; display: flex; padding: 8px; flex-direction: column; align-items: center; color: #2670E8; border-radius: 8px; border: 1px solid #2670E8;">
+    <span style="font-weight: 700; font-size: 12px;">Rotulo</span>
+    <span style="font-weight: 400; font-size: 16px;">Rotulo</span>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.ajax({
+        type: "GET",
+        url: "HIST_PAINEL_COVIDBR_2021_Parte2_04ago2021.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+      });
+    });
+
+    function processData(allText) {
+      var record_num = 5;  // or however many elements there are in each row
+      var allTextLines = allText.split(/\r\n|\n/);
+      var entries = allTextLines[0].split(',');
+      var lines = [];
+
+      var headings = entries.splice(0,record_num);
+      while (entries.length>0) {
+        var tarr = [];
+        for (var j=0; j<record_num; j++) {
+            tarr.push(headings[j]+":"+entries.shift());
+        }
+        lines.push(tarr);
+      }
+      // alert(lines);
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    const options1 = {
+      chart: {
+        type: 'line'
+      },
+      series: [
+        { data: [[1, 34], [3, 54], [5, 23], [15, 43]] },
+        { data: [[1, 34], [3, 65], [5, 20], [15, 0]]}
+      ], 
+      tooltip: {
+        custom: 
+          ({ series, seriesIndex, dataPointIndex, w}) => 
+            `<div style="display: flex; padding: 8px; flex-direction: column; align-items: center; color: #2670E8; border-radius: 8px; border: 1px solid #2670E8;">
+              <span style="font-weight: 700; font-size: 12px;">Rotulo</span>
+              <span style="font-weight: 400; font-size: 16px;">${series[seriesIndex][dataPointIndex]}</span>
+            </div>`,
+      },
+      xaxis: {
+        type: 'numeric'
+      }
+    }
+
+    const chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+
+    const options2 = {
+      chart: {
+        type: 'area'
+      },
+      colors: [function({ value, seriesIndex, w }) {
+        if (value < 55) {
+            return '#7E36AF'
+        } else {
+            return '#D9534F'
+        }
+      }, function({ value, seriesIndex, w }) {
+        if (value < 111) {
+            return '#7E36AF'
+        } else {
+            return '#D9534F'
+        }
+      }],
+      // tooltip: {
+      //   custom: console.log
+      // },
+      series: [{
+        type: 'column',
+        name: 'sales',
+        data: Array.from({length: 9}, () => Math.floor(Math.random() * 150))
+      },
+      {
+        type: 'line',
+        name: 'purchase',
+        data: Array.from({length: 9}, () => [Math.floor(Math.random() * 150), Math.floor(Math.random() * 150)])
+      }],
+      xaxis: {
+        categories: Array.from({length: 9}, (_, index) => index + new Date().getFullYear())
+      }
+    }
+
+    const chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+
+    chart1.render();
+    chart2.render();
+  </script>
+</body>
+</html>

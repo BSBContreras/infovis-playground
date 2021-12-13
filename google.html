@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+
+    const getRandom = (min, max) => {
+      return Math.round(Math.random() * (max - min) + min)
+    }
+
+    const line = Array.from({ length: 30 }, () => getRandom(800, 1300))
+    const column = Array.from({ length: 30 }, () => getRandom(800, 1300))
+    const datas = Array.from({ length: 30 }, (_, index) => String((new Date(2021, 7, 1 * (index + 1)))))
+
+    const options = {
+      chart: {
+        type: "line",
+        stacked: false
+      },
+      dataLabels: {
+        enabled: false
+      },
+      colors: ['#C2C2C2', '#2C2C2C'],
+      grid: {
+        show: true
+      },
+      series: [
+        {
+          name: "Mortes",
+          type: 'column',
+          data: column
+        },
+        {
+          name: "Média de 7 dias",
+          type: 'line',
+          data: line
+        },
+      ],
+      stroke: {
+        width: [0.3, 4],
+        colors: ['#FFFFFF', '#2C2C2C']
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: "100%"
+        }
+      },
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+      yaxis: {
+        axisTicks: {
+          show: false
+        },
+        axisBorder: {
+          show: false,
+        },
+      },
+      tooltip: {
+        shared: true,
+        x: {
+          show: false
+        },
+        fixed: {
+          enabled: false,
+          position: 'topLeft',
+          offsetX: 0,
+          offsetY: 0,
+        },
+      },
+      legend: {
+        horizontalAlign: "left",
+        offsetX: 40,
+        markers: {
+          width: [24, 12],
+          height: [6, 12]
+        }
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Infovis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet" />
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+    <!-- <script src='script.js'></script> -->
+  </head>
+  <body>
+    <div
+      id="chart-clean"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <!-- <div style="height: 50%; width: 50%" id="chart-clean-1"></div>
+      <div style="height: 50%; width: 50%" id="chart-clean-2"></div>
+      <div style="height: 50%; width: 50%" id="chart-clean-3"></div> -->
+    </div>
+
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-outlier"></div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-missing"></div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-area"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      const createGauge = (title, series, color) => ({
+        chart: {
+          type: "radialBar",
+        },
+        series: series,
+        colors: [color.primary],
+        title: {
+          text: title,
+          align: "center",
+          margin: 0,
+          offsetY: 16,
+          style: {
+            fontSize: "24px",
+            fontWeight: "bold",
+            fontFamily: "Rawline, Arial, sans-serif",
+            color: "#000",
+          },
+        },
+        plotOptions: {
+          radialBar: {
+            startAngle: -90,
+            endAngle: 90,
+            track: {
+              background: color.secondary,
+            },
+            dataLabels: {
+              showOn: "always",
+              name: {
+                show: false,
+              },
+              value: {
+                show: true,
+                color: color.primary,
+                offsetY: -12,
+                fontSize: 36,
+                fontFamily: "Rawline, Arial, sans-serif",
+                formatter: (val) => val + "%",
+              },
+            },
+          },
+        },
+      });
+
+      const container = document.querySelector("#chart-clean");
+
+      [
+        createGauge("Título do Gráfico 1", [25], {
+          primary: "#C72487",
+          secondary: "#F3BEDE",
+        }),
+        createGauge("Título do Gráfico 2", [50], {
+          primary: "#2670E8",
+          secondary: "#C5D4EB",
+        }),
+        createGauge("Título do Gráfico 3", [75], {
+          primary: "#36A191",
+          secondary: "#86C7BD",
+        }),
+      ].forEach((option, index) => {
+        const node = document.createElement("div");
+        node.setAttribute("id", `#chart-clean-${index + 1}`);
+        container.append(node);
+        new ApexCharts(node, option).render();
+      });
+    </script>
+  </body>
+</html>

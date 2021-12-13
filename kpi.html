@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Rawline-->
+  <link 
+    rel="stylesheet"
+    href="http://fonts.cdnfonts.com/css/rawline" 
+  />
+  <!-- DSGOV CSS-->
+  <link
+      rel="stylesheet"
+      href="./assets/dsgov/dist/dsgov.min.css"
+  />
+  <!-- Fontawesome-->
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+  />
+  <title>KPI</title>
+  <style>
+
+    sub {
+      line-height: normal;
+    }
+    
+    .ds-kpi-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ds-kpi {
+      --primary: #2670E8;
+      --white: #FFFFFF;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8px 20px;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      color: var(--primary);
+
+      /* min-width: min-content; */
+
+      height: 85px;
+    }  
+
+    .ds-kpi-group {
+      --primary: #2670E8;
+      --white: #FFFFFF;
+
+      padding: 8px 0;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      color: var(--primary);
+
+      min-height: 85px;
+    }
+
+    .ds-kpi-group-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ds-kpi sub, 
+    .ds-kpi-group sub,
+    .ds-kpi-icon sub  {
+      font-size: 0.9rem;
+      /* 14,4 px */
+    }
+
+    .ds-kpi span, 
+    .ds-kpi-group span,
+    .ds-kpi-icon span {
+      min-width: 7ch;
+      text-align: right;
+      font-size: 2rem;
+      /* 32px */
+    } 
+
+    .ds-kpi-outlier {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .ds-kpi-outlier span {
+      font-weight: bold;
+    }
+
+    .ds-kpi-missing span::after {
+      content: "-";
+    }
+
+    .ds-kpi-icon {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .ds-kpi-icon i {
+      font-size: 4rem;
+      margin-right: 1rem;
+      box-sizing: border-box;
+      width: 4rem;
+    }
+
+    .ds-kpi-icon div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ds-kpi-uncertainty {
+      border-style: dotted;
+    }
+        
+    .ds-kpi-pink {
+      --primary: #E368B2;
+    }
+
+    .ds-kpi-green {
+      --primary: #36A191;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="ds-kpi-container">
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo A</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo B</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo C</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo D</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo E</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo F</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo G</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo H</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ds-kpi-container">
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo A</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo B</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-outlier">
+          <sub>Rótulo C</sub>
+          <span>256</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo D</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo E</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo F</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo G</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo H</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ds-kpi-container">
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo A</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo B</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-missing">
+          <sub>Rótulo C</sub>
+          <span></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo D</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo E</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-missing">
+          <sub>Rótulo F</sub>
+          <span></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo G</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo H</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ds-kpi-container">
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo A</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo B</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-uncertainty">
+          <sub>Rótulo C</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo D</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo E</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-uncertainty">
+          <sub>Rótulo F</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo G</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo H</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ds-kpi-container">
+    <section class="row">
+      <div class="col-sm-12 col-md-9 my-2">
+        <div class="row ds-kpi-group">
+          <section class="col-sm-12 col-md-4 ds-kpi-group-item">
+            <sub>Rótulo A</sub>
+            <span>3.201.894</span>
+          </section>
+          <section class="col-sm-12 col-md-4 ds-kpi-group-item">
+            <sub>Rótulo B</sub>
+            <span>3.201.894</span>
+          </section>
+          <section class="col-sm-12 col-md-4 ds-kpi-group-item">
+            <sub>Rótulo C</sub>
+            <span>3.201.894</span>
+          </section>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo D</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo E</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-outlier">
+          <sub>Rótulo F</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 my-2">
+        <div class="row ds-kpi-group ds-kpi-pink ds-kpi-outlier">
+          <section class="col-sm-12 col-md-6 ds-kpi-group-item">
+            <sub>Rótulo G</sub>
+            <span>3.201.894</span>
+          </section>
+          <section class="col-sm-12 col-md-6 ds-kpi-group-item">
+            <sub>Rótulo H</sub>
+            <span>3.201.894</span>
+          </section>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ds-kpi-container">
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo A</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo B</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-pink">
+          <sub>Rótulo C</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-outlier ds-kpi-green">
+          <sub>Rótulo D</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-pink">
+          <sub>Rótulo E</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-outlier ds-kpi-pink">
+          <sub>Rótulo F</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi ds-kpi-green">
+          <sub>Rótulo G</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 my-2">
+        <div class="ds-kpi">
+          <sub>Rótulo H</sub>
+          <span>3.201.894</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ds-kpi-container">
+    <section class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 my-2">
+        <div class="ds-kpi ds-kpi-icon">
+          <i class="fas fa-user-md"></i>
+          <div>
+            <sub>Rótulo A</sub>
+            <span>3.201.894</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 my-2">
+        <div class="ds-kpi ds-kpi-icon">
+          <i class="fas fa-syringe"></i>
+          <div>
+            <sub>Rótulo B</sub>
+            <span>3.201.894</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 my-2">
+        <div class="ds-kpi ds-kpi-icon">
+          <i class="fas fa-ambulance"></i>
+          <div>
+            <sub>Rótulo C</sub>
+            <span>7.308.256</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

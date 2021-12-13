@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-clean"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-outlier"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-missing"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    const column = [1062, 856, 871, 879, 890, 985, 994, 920, 963, 983, 933, 972]
+    const datas = [
+      1627786800000, 1627873200000, 1627959600000, 1628046000000, 
+      1628132400000, 1628218800000, 1628305200000, 1628391600000, 
+      1628478000000, 1628564400000, 1628650800000, 1628737200000
+    ]
+
+    const predef = {
+      type: 'bar',
+      stacked: true,
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Rawline, Arial, sans-serif',
+      defaultLocale: 'pt-br',
+      locales: [{
+        "name": "pt-br",
+        "options": {
+          "months": [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+          ],
+          "shortMonths": [
+            "Jan",
+            "Fev",
+            "Mar",
+            "Abr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Set",
+            "Out",
+            "Nov",
+            "Dez"
+          ],
+          "days": [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Sábado"
+          ],
+          "shortDays": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+          "toolbar": {
+            "exportToSVG": "Baixar SVG",
+            "exportToPNG": "Baixar PNG",
+            "exportToCSV": "Baixar CSV",
+            "menu": "Menu",
+            "selection": "Selecionar",
+            "selectionZoom": "Selecionar Zoom",
+            "zoomIn": "Aumentar",
+            "zoomOut": "Diminuir",
+            "pan": "Navegação",
+            "reset": "Reiniciar Zoom"
+          }
+        }
+      }]
+    }
+
+    const options_clean = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+
+      // Configuração mediante a um gráfico
+      plotOptions: {
+        bar: {
+          columnWidth: '80%'
+        }
+      },
+
+      /**
+      * Definição de cores
+      * [0] #86C7BD => Cor da coluna padrão
+      */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          name: 'Mortes',
+          type: 'column',
+          data: column
+        }
+      ],
+      
+      /**
+      * Gráfico temporal
+      * Definindo eixo x como datetime para aceitar datas
+      */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Mortes'
+          },
+          seriesName: 'Mortes',
+        }    
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-clean'), options_clean);
+
+    chart.render();
+  </script>
+  <script>
+    const column_outlier = [1462, 856, 871, 879, 890, 985, 994, 920, 963, 983, 933, 972]
+
+    const options_outlier = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+
+      // Configuração mediante a um gráfico
+      plotOptions: {
+        bar: {
+          columnWidth: '80%',
+          colors: {
+            ranges: [{
+              from: 1000,
+              to: Number.MAX_SAFE_INTEGER,
+              color: '#36A191'
+            }],
+          }
+        }
+      },
+
+      /**
+      * Definição de cores
+      * [0] #86C7BD => Cor da coluna padrão
+      */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          name: 'Mortes',
+          type: 'column',
+          data: column_outlier
+        }
+      ],
+
+      /**
+      * Gráfico temporal
+      * Definindo eixo x como datetime para aceitar datas
+      */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Mortes'
+          },
+          seriesName: 'Mortes',
+        }     
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-outlier'), options_outlier);
+
+    chart.render();
+  </script>
+  <script>
+    const column_missing = [1062, 856, 871, 879, 890, 985, 994, 920, 963, null, 933, 972]
+
+    const missing = datas[9] // index do missing data
+
+    const options_missing = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+
+      // Configuração mediante a um gráfico
+      plotOptions: {
+        bar: {
+          columnWidth: '80%',
+        }
+      },
+
+      /**
+       * Definição de cores
+       * [0] #86C7BD => Cor da coluna padrão
+       */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          name: 'Mortes',
+          type: 'column',
+          data: column_missing
+        },
+      ],
+      
+      /**
+       * Gráfico temporal
+       * Definindo eixo x como datetime para aceitar datas
+       */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Mortes'
+          },
+          seriesName: 'Mortes',
+        }      
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+
+      annotations: {
+        xaxis: [
+          {
+            x: missing,
+            borderColor: '#86C7BD',
+            strokeDashArray: 0,
+            label: {
+              borderColor: '#86C7BD',
+              orientation: 'horizontal',
+              text: 'Dado Faltante'
+            }
+          }
+        ]
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-missing'), options_missing);
+
+    chart.render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Infovis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet" />
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+    <!-- <script src='script.js'></script> -->
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-clean"></div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-outlier"></div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-missing"></div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      "
+    >
+      <div style="height: 50%; width: 50%" id="chart-area"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      const predef = {
+        type: "bar",
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false,
+        },
+        fontFamily: "Rawline, Arial, sans-serif",
+        defaultLocale: "pt-br",
+        locales: [
+          {
+            name: "pt-br",
+            options: {
+              months: [
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Agosto",
+                "Setembro",
+                "Outubro",
+                "Novembro",
+                "Dezembro",
+              ],
+              shortMonths: [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez",
+              ],
+              days: [
+                "Domingo",
+                "Segunda",
+                "Terça",
+                "Quarta",
+                "Quinta",
+                "Sexta",
+                "Sábado",
+              ],
+              shortDays: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+              toolbar: {
+                exportToSVG: "Baixar SVG",
+                exportToPNG: "Baixar PNG",
+                exportToCSV: "Baixar CSV",
+                menu: "Menu",
+                selection: "Selecionar",
+                selectionZoom: "Selecionar Zoom",
+                zoomIn: "Aumentar",
+                zoomOut: "Diminuir",
+                pan: "Navegação",
+                reset: "Reiniciar Zoom",
+              },
+            },
+          },
+        ],
+      };
+
+      const options_clean = {
+        // Configuração Geral
+        chart: {
+          stacked: true,
+          ...predef,
+        },
+        series: [
+          {
+            name: "Homens",
+            data: [
+              0.4, 0.65, 0.76, 0.88, 1.5, 2.1, 2.9, 3.8, 3.9, 4.2, 4, 4.3, 4.1,
+              4.2, 4.5, 3.9, 3.5, 3,
+            ],
+          },
+          {
+            name: "Mulheres",
+            data: [
+              -0.8, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22,
+              -4.3, -4.4, -4.1, -4, -4.1, -3.4, -3.1, -2.8,
+            ],
+          },
+        ],
+        colors: ["#86C7BD", "#2670E8"],
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            barHeight: "80%",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          width: 1,
+          colors: ["#fff"],
+        },
+
+        grid: {
+          xaxis: {
+            lines: {
+              show: false,
+            },
+          },
+        },
+        yaxis: {
+          min: -5,
+          max: 5,
+          title: {
+            text: "Idade",
+          },
+        },
+        tooltip: {
+          shared: false,
+          x: {
+            formatter: function (val) {
+              return val;
+            },
+          },
+          y: {
+            formatter: function (val) {
+              return Math.abs(val) + "%";
+            },
+          },
+        },
+        title: {
+          text: "Pessoas infectadas por faixa etária e sexo",
+        },
+        legend: {
+          inverseOrder: true,
+          offsetX: 32,
+        },
+        xaxis: {
+          categories: [
+            "85+",
+            "80-84",
+            "75-79",
+            "70-74",
+            "65-69",
+            "60-64",
+            "55-59",
+            "50-54",
+            "45-49",
+            "40-44",
+            "35-39",
+            "30-34",
+            "25-29",
+            "20-24",
+            "15-19",
+            "10-14",
+            "5-9",
+            "0-4",
+          ],
+          title: {
+            text: "Percentual",
+          },
+          labels: {
+            formatter: function (val) {
+              return Math.abs(Math.round(val)) + "%";
+            },
+          },
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#chart-clean"),
+        options_clean
+      );
+
+      chart.render();
+    </script>
+    <script>
+      const options_outlier = {
+        // Configuração Geral
+        chart: {
+          stacked: true,
+          ...predef,
+        },
+        series: [
+          {
+            name: "Homens",
+            data: [
+              0.4, 0.65, 0.76, 0.88, 1.5, 2.1, 2.9, 3.8, 3.9, 4.2, 0.4, 4.3,
+              4.1, 4.2, 4.5, 3.9, 3.5, 3,
+            ],
+          },
+          {
+            name: "Mulheres",
+            data: [
+              -3.5, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22,
+              -4.3, -4.4, -4.1, -4, -4.1, -3.4, -3.2, -2.8,
+            ],
+          },
+        ],
+        colors: ["#86C7BD", "#2670E8"],
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            barHeight: "80%",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          width: 1,
+          colors: ["#fff"],
+        },
+        annotations: {
+          yaxis: [
+            {
+              y: "35-39",
+              borderColor: "#86C7BD",
+              width: "50%",
+              offsetX: "45%",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#86C7BD",
+                orientation: "horizontal",
+                text: "0,4%",
+                offsetY: 7.5,
+              },
+            },
+            {
+              y: "85+",
+              borderColor: "#2670E8",
+              width: "50%",
+              strokeDashArray: 0,
+              label: {
+                position: "left",
+                borderColor: "#2670E8",
+                orientation: "horizontal",
+                text: "3,5%",
+                offsetY: 7.5,
+                offsetX: "5%",
+              },
+            },
+          ],
+        },
+        grid: {
+          xaxis: {
+            lines: {
+              show: false,
+            },
+          },
+        },
+        yaxis: {
+          min: -5,
+          max: 5,
+          title: {
+            text: "Idade",
+          },
+        },
+        tooltip: {
+          shared: false,
+          x: {
+            formatter: function (val) {
+              return val;
+            },
+          },
+          y: {
+            formatter: function (val) {
+              return Math.abs(val) + "%";
+            },
+          },
+        },
+        title: {
+          text: "Pessoas infectadas por faixa etária e sexo",
+        },
+        legend: {
+          inverseOrder: true,
+          offsetX: 32,
+        },
+        xaxis: {
+          categories: [
+            "85+",
+            "80-84",
+            "75-79",
+            "70-74",
+            "65-69",
+            "60-64",
+            "55-59",
+            "50-54",
+            "45-49",
+            "40-44",
+            "35-39",
+            "30-34",
+            "25-29",
+            "20-24",
+            "15-19",
+            "10-14",
+            "5-9",
+            "0-4",
+          ],
+          title: {
+            text: "Percentual",
+          },
+          labels: {
+            formatter: function (val) {
+              return Math.abs(Math.round(val)) + "%";
+            },
+          },
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#chart-outlier"),
+        options_outlier
+      );
+
+      chart.render();
+    </script>
+    <script>
+      const options_missing = {
+        chart: {
+          stacked: true,
+          ...predef,
+        },
+        series: [
+          {
+            name: "Homens",
+            data: [
+              0.4, 0.65, 0.76, 0.88, 1.5, 2.1, 2.9, 3.8, null, 4.2, 4, 4.3, 4.1,
+              4.2, 4.5, 3.9, 3.5, 3,
+            ],
+          },
+          {
+            name: "Mulheres",
+            data: [
+              -0.8, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22,
+              -4.3, -4.4, -4.1, -4, -4.1, -3.4, -3.1, -2.8,
+            ],
+          },
+        ],
+        colors: ["#86C7BD", "#2670E8"],
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            barHeight: "80%",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          width: 1,
+          colors: ["#fff"],
+        },
+        annotations: {
+          yaxis: [
+            {
+              y: "45-49",
+              borderColor: "#86C7BD",
+              width: "50%",
+              offsetX: "45%",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#86C7BD",
+                orientation: "horizontal",
+                text: "Dado Ausente",
+                offsetY: 7.5,
+              },
+            },
+          ],
+        },
+        grid: {
+          xaxis: {
+            lines: {
+              show: false,
+            },
+          },
+        },
+        yaxis: {
+          min: -5,
+          max: 5,
+          title: {
+            text: "Idade",
+          },
+        },
+        tooltip: {
+          shared: false,
+          x: {
+            formatter: function (val) {
+              return val;
+            },
+          },
+          y: {
+            formatter: function (val) {
+              return Math.abs(val) + "%";
+            },
+          },
+        },
+        title: {
+          text: "Pessoas infectadas por faixa etária e sexo",
+        },
+        legend: {
+          inverseOrder: true,
+          offsetX: 32,
+        },
+        xaxis: {
+          categories: [
+            "85+",
+            "80-84",
+            "75-79",
+            "70-74",
+            "65-69",
+            "60-64",
+            "55-59",
+            "50-54",
+            "45-49",
+            "40-44",
+            "35-39",
+            "30-34",
+            "25-29",
+            "20-24",
+            "15-19",
+            "10-14",
+            "5-9",
+            "0-4",
+          ],
+          title: {
+            text: "Percentual",
+          },
+          labels: {
+            formatter: function (val) {
+              return Math.abs(Math.round(val)) + "%";
+            },
+          },
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#chart-missing"),
+        options_missing
+      );
+
+      chart.render();
+    </script>
+  </body>
+</html>

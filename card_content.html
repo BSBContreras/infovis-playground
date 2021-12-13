@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Template básico</title>
+    <!-- Fonte Rawline-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <!-- Fonte Raleway-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="./assets/dsgov/dist/dsgov.css" />
+    <!-- Fontawesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <style>
+      .ds-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .br-card {
+        position: relative;
+      }
+
+      .ds-card-badge {
+        content: "novo";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding: 8px 16px;
+        background: #86c7bd;
+        color: white;
+        z-index: 1;
+      }
+
+      .ds-title-green {
+        font-weight: bold;
+        color: #36A191;
+      }
+      
+      .ds-card-icon {
+        font-size: 64px;
+      }
+
+      .ds-image {
+        max-height: 160px;
+      }
+
+      .ds-news {
+        box-shadow: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="ds-container">
+      <div class="col-md-8">
+        <div class="br-card">
+          <div class="card-header">
+            <div class="ml-3">
+              <p class="h5 text-primary-default mb-0">
+                Casos de AIDS identificados no Brasil
+              </p>
+              <span>Por ano</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div id="chart-clean"></div>
+            <span class="mx-3">
+              Fonte: MS/SVS/Departamento de Doenças de Condições Crônicas e
+              Infecções Sexualmente Transmissíveis (DCCI).
+            </span>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between">
+              <a class="br-button" href="#">
+                <span class="content">
+                  <i class="fas fa-info-circle" aria-hidden="true"></i>
+                  Fontes
+                </span>
+              </a>
+              <a class="br-button" href="#">
+                <span class="content">
+                  <i class="fas fa-share-alt" aria-hidden="true"></i>
+                  Compartilhar
+                </span>
+              </a>
+              <a class="br-button" href="#">
+                <span class="content">
+                  <i class="fas fa-download" aria-hidden="true"></i>
+                  Baixar Dados
+                </span>
+              </a>
+              <a class="br-button" href="#">
+                <span class="content">
+                  <i class="fas fa-table" aria-hidden="true"></i>
+                  Tabela
+                </span>
+              </a>
+              <a class="br-button" href="#">
+                <span class="content">
+                  <i class="far fa-comment" aria-hidden="true"></i>
+                  Feedback
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Novo -->
+    <div class="row ds-container">
+      <div class="col-md-3">
+        <div class="br-card">
+          <div class="card-header">
+            <div class="ml-3">
+              <p class="h6 mt-3 text-primary-default mb-0">Título Exemplo</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <img
+              width="100%"
+              class="mx-auto d-block ds-image"
+              src="./assets/img/grafico-bivariado-linha-coluna.svg"
+              src="Grafico Combinado de Linha e Coluna"
+            />
+            <p class="mx-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              elementum rutrum turpis sed accumsan.
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex">
+              <a
+                class="br-button circle ml-auto"
+                type="button"
+                aria-label="Ícone ilustrativo"
+              >
+                <i class="fas fa-share-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="br-card">
+          <div class="card-header">
+            <div class="ml-3">
+              <p class="h6 mt-3 text-primary-default mb-0">Título Exemplo</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <img
+              width="100%"
+              class="mx-auto d-block ds-image"
+              src="./assets/img/grafico-bivariado-linha-coluna.svg"
+              src="Grafico Combinado de Linha e Coluna"
+            />
+            <p class="mx-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              elementum rutrum turpis sed accumsan.
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex">
+              <a
+                class="br-button circle ml-auto"
+                type="button"
+                aria-label="Ícone ilustrativo"
+              >
+                <i class="fas fa-share-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <span class="ds-card-badge">novo</span>
+        </div>
+      </div>
+    </div>
+    <div class="ds-container">
+      <div class="col-md-3">
+        <div class="br-card ds-news">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+              <p class="my-auto">Título Exemplo</p>
+              <a
+                class="br-button circle ml-auto"
+                type="button"
+                aria-label="Ícone ilustrativo"
+              >
+                <i class="fas fa-share-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="h4 ds-title-green">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pictograma -->
+    <div class="row ds-container">
+      <div class="col-md-3">
+        <div class="br-card">
+          <div class="card-content">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-heartbeat fa-4x text-primary-default" aria-hidden="true"></i>
+              <p class="h6 ml-2">
+                Título de Exemplo
+              </p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p class="mx-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="br-card">
+          <div class="card-content">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-file-medical fa-4x text-primary-default" aria-hidden="true"></i>
+              <p class="h6 ml-2">
+                Título de Exemplo
+              </p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p class="mx-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Grafico de pizza -->
+    <div class="ds-container">
+      <div class="col-md-4">
+        <div class="br-card">
+          <div class="card-header">
+            <div class="ml-3">
+              <p class="h5 text-primary-default mb-0">
+                Casos de AIDS identificados no Brasil
+              </p>
+              <span>Por ano</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div id="chart-pie-clean"></div>
+            <span class="mx-3">
+              Fonte: MS/SVS/Departamento de Doenças de Condições Crônicas e
+              Infecções Sexualmente Transmissíveis (DCCI).
+            </span>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between">
+              <a class="br-button flex-column" style="max-width: 90px;" href="#">
+                <span class="content">
+                  <i class="fas fa-info-circle" aria-hidden="true"></i>
+                </span>
+                <span style="font-size: 10px;">Fontes</span>
+              </a>
+              <a class="br-button flex-column" style="max-width: 90px;" href="#">
+                <span class="content">
+                  <i class="fas fa-share-alt" aria-hidden="true"></i>
+                </span>
+                <span style="font-size: 10px;">Compartilhar</span>
+              </a>
+              <a class="br-button flex-column" style="max-width: 90px;" href="#">
+                <span class="content">
+                  <i class="fas fa-download" aria-hidden="true"></i>
+                </span>
+                <span style="font-size: 10px;">Baixar Dados</span>
+              </a>
+              <a class="br-button flex-column" style="max-width: 90px;" href="#">
+                <span class="content">
+                  <i class="fas fa-table" aria-hidden="true"></i>
+                </span>
+                <span style="font-size: 10px;">Tabela</span>
+              </a>
+              <a class="br-button flex-column" style="max-width: 90px;" href="#">
+                <span class="content">
+                  <i class="far fa-comment" aria-hidden="true"></i>
+                </span>
+                <span style="font-size: 10px;">Feedback</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      const line = [
+        1,
+        null,
+        4,
+        30,
+        93,
+        407,
+        785,
+        1899,
+        3133,
+        4949,
+        6561,
+        9208,
+        12086,
+        14256,
+        15121,
+        16912,
+        20138,
+        22287,
+        27330,
+        24981,
+        23971,
+        24441,
+        24520,
+        24312,
+        26361,
+        29452,
+        27750,
+        22869,
+        27552,
+        29928,
+        30655,
+        35906,
+        34051,
+        34427,
+        32854,
+        31089,
+        29961,
+        33356,
+        27204,
+        25110,
+        8431,
+      ];
+      const column = [
+        1,
+        null,
+        17,
+        42,
+        134,
+        534,
+        1120,
+        2703,
+        4348,
+        6008,
+        8650,
+        11517,
+        14237,
+        16413,
+        18028,
+        20811,
+        23670,
+        25954,
+        28838,
+        26514,
+        36483,
+        34942,
+        39398,
+        38185,
+        38355,
+        38230,
+        37643,
+        38712,
+        41225,
+        41192,
+        40775,
+        42772,
+        42480,
+        43368,
+        42135,
+        40995,
+        39425,
+        38535,
+        38040,
+        37308,
+        11880,
+      ];
+      const datas = [
+        1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991,
+        1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+        2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
+        2016, 2017, 2018, 2019, 2020,
+      ].map((date) => new Date(date, 0, 1).getTime());
+      const missing = datas[1];
+
+      const predef = {
+        type: "line",
+        stacked: true,
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false,
+        },
+        fontFamily: "Rawline, Arial, sans-serif",
+        defaultLocale: "pt-br",
+        locales: [
+          {
+            name: "pt-br",
+            options: {
+              months: [
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Agosto",
+                "Setembro",
+                "Outubro",
+                "Novembro",
+                "Dezembro",
+              ],
+              shortMonths: [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez",
+              ],
+              days: [
+                "Domingo",
+                "Segunda",
+                "Terça",
+                "Quarta",
+                "Quinta",
+                "Sexta",
+                "Sábado",
+              ],
+              shortDays: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+              toolbar: {
+                exportToSVG: "Baixar SVG",
+                exportToPNG: "Baixar PNG",
+                exportToCSV: "Baixar CSV",
+                menu: "Menu",
+                selection: "Selecionar",
+                selectionZoom: "Selecionar Zoom",
+                zoomIn: "Aumentar",
+                zoomOut: "Diminuir",
+                pan: "Navegação",
+                reset: "Reiniciar Zoom",
+              },
+            },
+          },
+        ],
+      };
+
+      const options_clean = {
+        // Configuração Geral
+        chart: {
+          ...predef,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        grid: {
+          show: true,
+        },
+        markers: {
+          size: 6,
+          strokeWidth: 0,
+        },
+
+        // Configuração mediante a um gráfico
+        plotOptions: {
+          bar: {
+            columnWidth: "80%",
+          },
+        },
+
+        /**
+         * Definição de cores
+         * [0] #86C7BD => Cor da coluna padrão
+         * [1] #2670E8 => Cor da linha padrão
+         */
+        colors: ["#86C7BD", "#2670E8"],
+        series: [
+          {
+            name: "Notificações",
+            type: "column",
+            data: column,
+          },
+          {
+            name: "Diágnosticos",
+            type: "line",
+            data: line,
+          },
+        ],
+
+        /**
+         * Peso da borda
+         * 0 px para colunas
+         * 4 px para linhas
+         */
+        stroke: {
+          width: [0, 4],
+        },
+
+        /**
+         * Gráfico temporal
+         * Definindo eixo x como datetime para aceitar datas
+         */
+        xaxis: {
+          type: "datetime",
+          categories: datas,
+          labels: {
+            formatter: (value) => new Date(value).getFullYear(),
+          },
+        },
+
+        yaxis: [
+          {
+            title: {
+              text: "Notificações",
+            },
+            seriesName: "Notificações",
+          },
+          {
+            opposite: true,
+            title: {
+              text: "Diágnosticos",
+            },
+            seriesName: "Diágnosticos",
+          },
+        ],
+
+        tooltip: {
+          shared: true,
+          x: {
+            show: false,
+          },
+        },
+
+        annotations: {
+          xaxis: [
+            {
+              x: missing,
+              borderColor: "#86C7BD",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#86C7BD",
+                orientation: "horizontal",
+                text: "Dado Faltante",
+              },
+            },
+          ],
+        },
+
+        legend: {
+          offsetY: 10,
+          markers: {
+            width: [16, 24],
+            height: [10, 6],
+            radius: [0, 6],
+          },
+        },
+      };
+
+      var chart = new ApexCharts(
+        document.querySelector("#chart-clean"),
+        options_clean
+      );
+
+      chart.render();
+    </script>
+    <script>
+      const options_clean_pie = {
+        chart: {
+          type: 'pie',
+          fontFamily: 'Rawline, Arial, sans-serif',
+        },
+        dataLabels: {
+          dropShadow: {
+            enabled: false
+          }
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: '50%'
+            }
+          }
+        },
+        labels: ['Grupo A', 'Grupo B', 'Grupo C', 'Grupo D'],
+        series: [46, 28, 16, 10],
+        colors: ['#2670E8', '#36A191', '#E368B2', '#FFE066'],
+        legend: {
+          position: 'right',
+        }
+      }
+  
+      var chart_pie = new ApexCharts(document.querySelector("#chart-pie-clean"), options_clean_pie)
+      chart_pie.render()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+</head>
+
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-clean"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-group"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    const tree_clean = [218, 149, 184, 55, 84, 31, 70, 30, 44, 68, 28, 19, 29].map((value, index) => ({ x: `Categoria ${index + 1}`, y: value }))
+
+    const predef = {
+      type: 'treemap',
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Rawline, Arial, sans-serif',
+      defaultLocale: 'pt-br',
+      locales: [{
+        "name": "pt-br",
+        "options": {
+          "months": [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+          ],
+          "shortMonths": [
+            "Jan",
+            "Fev",
+            "Mar",
+            "Abr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Set",
+            "Out",
+            "Nov",
+            "Dez"
+          ],
+          "days": [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Sábado"
+          ],
+          "shortDays": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+          "toolbar": {
+            "exportToSVG": "Baixar SVG",
+            "exportToPNG": "Baixar PNG",
+            "exportToCSV": "Baixar CSV",
+            "menu": "Menu",
+            "selection": "Selecionar",
+            "selectionZoom": "Selecionar Zoom",
+            "zoomIn": "Aumentar",
+            "zoomOut": "Diminuir",
+            "pan": "Navegação",
+            "reset": "Reiniciar Zoom"
+          }
+        }
+      }]
+    }
+
+    const options_clean = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      grid: {
+        show: true
+      },
+
+      /**
+      * Definição de cores
+      */
+      colors: ['#86C7BD'],
+      series: [
+        {
+          data: tree_clean
+        }
+      ],
+
+      plotOptions: {
+        treemap: {
+          enableShades: false
+        }
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-clean'), options_clean);
+
+    chart.render();
+  </script>
+  <script>
+    const tree_group_1 = [218, 149, 184, 55, 84, 31, 70, 30, 19, 29].map((value, index) => ({ x: `Categoria ${index + 1}`, y: value }))
+    const tree_group_2 = [218, 44, 68, 28, 19, 29].map((value, index) => ({ x: `Categoria ${index + 1}`, y: value }))
+    const tree_group_3 = [218, 149, 184, 55, 84, 31 ].map((value, index) => ({ x: `Categoria ${index + 1}`, y: value }))
+
+    const options_group = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      grid: {
+        show: true
+      },
+
+      /**
+      * Definição de cores
+      */
+      colors: ['#29796D', '#36A191', '#86C7BD'],
+      // colors: ['#E368B2', '#2670E8', '#86C7BD'], // Teste
+      series: [
+        {
+          name: "Grupo 1",
+          data: tree_group_1
+        },
+        {
+          name: "Grupo 2",
+          data: tree_group_2
+        },
+        {
+          name: "Grupo 3",
+          data: tree_group_3
+        }
+      ],
+
+      plotOptions: {
+        treemap: {
+          enableShades: false
+        }
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-group'), options_group);
+
+    chart.render();
+  </script>
+</body>
+</html>

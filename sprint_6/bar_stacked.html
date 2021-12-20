@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-clean"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-outlier"></div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-missing"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    const column_clean_1 = [1079, 1062, 985, 971, 890, 856]
+    const column_clean_2 = [1079, 1062, 985, 971, 890, 856]
+    const x_data = [1, 2, 3, 4, 5, 6].map(name => (`Categoria ${name}`))
+
+    const predef = {
+      type: 'bar',
+      stacked: true,
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Rawline, Arial, sans-serif',
+      defaultLocale: 'pt-br',
+      locales: [{
+        "name": "pt-br",
+        "options": {
+          "months": [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+          ],
+          "shortMonths": [
+            "Jan",
+            "Fev",
+            "Mar",
+            "Abr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Set",
+            "Out",
+            "Nov",
+            "Dez"
+          ],
+          "days": [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Sábado"
+          ],
+          "shortDays": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+          "toolbar": {
+            "exportToSVG": "Baixar SVG",
+            "exportToPNG": "Baixar PNG",
+            "exportToCSV": "Baixar CSV",
+            "menu": "Menu",
+            "selection": "Selecionar",
+            "selectionZoom": "Selecionar Zoom",
+            "zoomIn": "Aumentar",
+            "zoomOut": "Diminuir",
+            "pan": "Navegação",
+            "reset": "Reiniciar Zoom"
+          }
+        }
+      }]
+    }
+
+    const options_clean = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+
+      // Configuração mediante a um gráfico
+      plotOptions: {
+        bar: {
+          columnWidth: '90%',
+          borderRadius: 4,
+          horizontal: true,
+        }
+      },
+
+      /**
+      * Definição de cores
+      */
+      colors: ['#86C7BD', '#2670E8'],
+      series: [
+        {
+          name: 'Valor Barra',
+          type: 'column',
+          data: column_clean_1
+        },
+        {
+          name: 'Valor Barra',
+          type: 'column',
+          data: column_clean_2
+        }
+      ],
+      
+      /**
+      * Gráfico Categorico
+      * Definindo eixo x como category para aceitar categorias
+      */ 
+      xaxis: {
+        type: 'category',
+        categories: x_data
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Valor Barra'
+          },
+          seriesName: 'Valor Barra',
+        }    
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-clean'), options_clean);
+
+    chart.render();
+  </script>
+  <script>
+    const column_outlier_1 = [4062, 1079, 985, 971, 890, 856]
+    const column_outlier_2 = [679, 1062, 985, 971, 890, 856]
+
+    const outlier_index = 0;
+
+    const outliers = [
+      {
+        y: x_data[outlier_index],
+        borderColor: '#86C7BD',
+        label_text: String(column_outlier_1[outlier_index]) + ' un.'
+      }
+    ]
+
+    const options_outlier = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+
+      annotations: {
+        yaxis: outliers.map(({y, borderColor, label_text}) => ({
+          y, borderColor,
+          strokeDashArray: 0,
+          label: {
+            borderColor,
+            orientation: 'horizontal',
+            text: label_text
+          }
+        }))
+      },
+
+      plotOptions: {
+        bar: {
+          columnWidth: '90%',
+          borderRadius: 4,
+          horizontal: true,
+        }
+      },
+
+      /**
+      * Definição de cores
+      */
+      colors: ['#86C7BD', '#2670E8'],
+      series: [
+        {
+          name: 'Valor Barra',
+          type: 'column',
+          data: column_outlier_1
+        },
+        {
+          name: 'Valor Barra',
+          type: 'column',
+          data: column_outlier_2
+        }
+      ],
+      
+      /**
+      * Gráfico Categorico
+      * Definindo eixo x como category para aceitar categorias
+      */ 
+      xaxis: {
+        type: 'category',
+        categories: x_data
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Valor Barra'
+          },
+          seriesName: 'Valor Barra',
+        }    
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-outlier'), options_outlier);
+
+    chart.render();
+  </script>
+  <script>
+    const column_missing_1 = [1099, 1062, 985, 971, 890, 856]
+    const column_missing_2 = [1099, 1062, 985, 971, 890, null]
+
+    const missing_index = 5;
+
+    const missings = [
+      {
+        y: x_data[missing_index],
+        borderColor: '#2670E8',
+        label_text: 'Dado Faltante'
+      }
+    ]
+
+    const options_missing = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+
+      // Annotation missing
+      annotations: {
+        yaxis: missings.map(({y, borderColor, label_text}) => ({
+          y, borderColor,
+          strokeDashArray: 0,
+          label: {
+            borderColor,
+            orientation: 'horizontal',
+            text: label_text
+          }
+        }))
+      },
+
+      // Configuração mediante a um gráfico
+      plotOptions: {
+        bar: {
+          columnWidth: '90%',
+          borderRadius: 4,
+          horizontal: true,
+        }
+      },
+
+      /**
+      * Definição de cores
+      */
+      colors: ['#86C7BD', '#2670E8'],
+      series: [
+        {
+          name: 'Valor Barra',
+          type: 'column',
+          data: column_missing_1
+        },
+        {
+          name: 'Valor Barra',
+          type: 'column',
+          data: column_missing_2
+        }
+      ],
+      
+      /**
+      * Gráfico Categorico
+      * Definindo eixo x como category para aceitar categorias
+      */ 
+      xaxis: {
+        type: 'category',
+        categories: x_data
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Valor Barra'
+          },
+          seriesName: 'Valor Barra',
+        }    
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-missing'), options_missing);
+
+    chart.render();
+  </script>
+</body>
+</html>

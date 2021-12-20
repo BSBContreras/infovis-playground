@@ -14,25 +14,27 @@
     <div style="height: 50%; width: 50%;" id="chart-clean"></div>
   </div>
   <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
-    <div style="height: 50%; width: 50%;" id="chart-multi"></div>
-  </div>
-  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
     <div style="height: 50%; width: 50%;" id="chart-outlier"></div>
   </div>
   <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
     <div style="height: 50%; width: 50%;" id="chart-missing"></div>
   </div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="height: 50%; width: 50%;" id="chart-multi"></div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script>
-    const line_clean_1 = [313, 550, 237, 299, 378, 326, 330, 358, 649, 456, 355, 352]
+    const column_clean_1 = [1062, 856, 871, 879, 890, 985, 994, 920, 963, 983, 933, 972]
+    const column_clean_2 = [972, 933, 983, 963, 920, 994, 985, 890, 879, 871, 856, 1062]
     const datas = [
       1627786800000, 1627873200000, 1627959600000, 1628046000000, 
       1628132400000, 1628218800000, 1628305200000, 1628391600000, 
       1628478000000, 1628564400000, 1628650800000, 1628737200000
     ]
-    
+
     const predef = {
-      type: 'line',
+      type: 'bar',
+      stacked: false,
       toolbar: {
         show: false
       },
@@ -110,27 +112,29 @@
         show: true
       },
 
-      /**
-      * Definição de cores
-      * [0] #2670E8 => Cor da linha padrão
-      */
-      colors: ['#2670E8'],
-      series: [
-        {
-          name: 'Categoria 1',
-          type: 'line',
-          data: line_clean_1
+      // Configuração mediante a um gráfico
+      plotOptions: {
+        bar: {
+          columnWidth: '80%'
         }
-      ],
+      },
 
       /**
-      * Peso da borda
-      * 4 px para linhas 
+      * Definição de cores
       */
-      stroke: {
-        width: 4,
-        curve: 'stepline',
-      },
+      colors: ['#86C7BD', '#2670E8'],
+      series: [
+        {
+          name: 'Coluna 1',
+          type: 'column',
+          data: column_clean_1
+        },
+        {
+          name: 'Coluna 2',
+          type: 'column',
+          data: column_clean_2
+        }
+      ],
       
       /**
       * Gráfico temporal
@@ -144,25 +148,16 @@
       yaxis: [
         {
           title: {
-            text: 'Categoria 1'
+            text: 'Titulo Eixo 1'
           },
-          seriesName: 'Categoria 1',
-        }       
+          seriesName: 'Coluna 1',
+        }    
       ],
 
       tooltip: {
         x: {
           show: false
-        }
-      },
-
-      legend: {
-        offsetY: 10,
-        markers: {
-          width: 24,
-          height: 6,
-          radius: 0
-        }
+        },
       },
     };
 
@@ -171,102 +166,16 @@
     chart.render();
   </script>
   <script>
-    const line_multi_1 = [313, 550, 237, 299, 378, 326, 330, 358, 649, 456, 355, 352]
-    const line_multi_2 = [408, 453, 387, 388, 332, 419, 457, 503, 724, 572, 379, 483]
-    const line_multi_3 = [493, 505, 471, 502, 512, 489, 515, 541, 500, 536, 403, 620]
+    const column_outlier_1 = [1062, 856, 871, 879, 890, 985, 1938, 920, 963, 983, 933, 972]
+    const column_outlier_2 = [972, 933, 983, 963, 920, 994, 150, 890, 879, 871, 856, 1062]
 
-    const options_multi = {
-      // Configuração Geral
-      chart: {
-        ...predef
-      },
-      dataLabels: {
-        enabled: false
-      },
-      grid: {
-        show: true
-      },
-
-      /**
-      * Definição de cores
-      * [0] #2670E8 => Cor da linha padrão
-      */
-      colors: ['#2670E8', '#E368B2', '#86C7BD'],
-      series: [
-        {
-          name: 'Categoria 1',
-          type: 'line',
-          data: line_multi_1
-        },
-        {
-          name: 'Categoria 2',
-          type: 'line',
-          data: line_multi_2
-        },
-        {
-          name: 'Categoria 3',
-          type: 'line',
-          data: line_multi_3
-        }
-      ],
-
-      /**
-      * Peso da borda
-      * 4 px para linhas 
-      */
-      stroke: {
-        width: 4,
-        curve: 'stepline',
-      },
-      
-      /**
-      * Gráfico temporal
-      * Definindo eixo x como datetime para aceitar datas
-      */ 
-      xaxis: {
-        type: 'datetime',
-        categories: datas
-      },
-
-      yaxis: [
-        {
-          title: {
-            text: 'Categoria 1'
-          },
-          seriesName: 'Categoria 1',
-        }       
-      ],
-
-      tooltip: {
-        x: {
-          show: false
-        }
-      },
-
-      legend: {
-        offsetY: 10,
-        markers: {
-          width: 24,
-          height: 6,
-          radius: 0
-        }
-      },
-    };
-
-    var chart = new ApexCharts(document.querySelector('#chart-multi'), options_multi);
-
-    chart.render();
-  </script>
-  <script>
-    const line_outlier_1 = [313, 550, 1200, 299, 378, 326, 330, 358, 649, 456, 355, 352]
-
-    const outlier_index = 2
+    const outlier_index = 6;
 
     const outliers = [
       {
         x: datas[outlier_index],
-        borderColor: '#2670E8',
-        label_text: String(line_outlier_1[outlier_index]) + ' un.'
+        borderColor: '#86C7BD',
+        label_text: String(column_outlier_1[outlier_index]) + ' un.'
       }
     ]
 
@@ -287,35 +196,32 @@
         xaxis: outliers.map(({x, borderColor, label_text}) => ({
           x, borderColor,
           strokeDashArray: 0,
+          offsetX: -8,
           label: {
             borderColor,
             orientation: 'horizontal',
-            text: label_text
+            text: label_text,
+            offsetX: -8,
           }
         }))
       },
 
       /**
       * Definição de cores
-      * [0] #2670E8 => Cor da linha padrão
       */
-      colors: ['#2670E8'],
+      colors: ['#86C7BD', '#2670E8'],
       series: [
         {
-          name: 'Categoria 1',
-          type: 'line',
-          data: line_outlier_1
+          name: 'Coluna 1',
+          type: 'column',
+          data: column_outlier_1
+        },
+        {
+          name: 'Coluna 2',
+          type: 'column',
+          data: column_outlier_2
         }
       ],
-
-      /**
-      * Peso da borda
-      * 4 px para linhas 
-      */
-      stroke: {
-        width: 4,
-        curve: 'stepline',
-      },
       
       /**
       * Gráfico temporal
@@ -329,25 +235,16 @@
       yaxis: [
         {
           title: {
-            text: 'Categoria 1'
+            text: 'Titulo Eixo 1'
           },
-          seriesName: 'Categoria 1',
-        }       
+          seriesName: 'Coluna 1',
+        }    
       ],
 
       tooltip: {
         x: {
           show: false
-        }
-      },
-
-      legend: {
-        offsetY: 10,
-        markers: {
-          width: 24,
-          height: 6,
-          radius: 0
-        }
+        },
       },
     };
 
@@ -356,14 +253,15 @@
     chart.render();
   </script>
   <script>
-    const line_missing_1 = [313, 550, null, 299, 378, 326, 330, 358, 649, 456, 355, 352]
+    const column_missing_1 = [1062, 856, 871, 879, 890, 985, null, 920, 963, 983, 933, 972]
+    const column_missing_2 = [972, 933, 983, 963, 920, 994, 150, 890, 879, 871, 856, 1062]
 
-    const missing_index = 2
+    const missing_index = 6;
 
     const missings = [
       {
         x: datas[missing_index],
-        borderColor: '#2670E8',
+        borderColor: '#86C7BD',
         label_text: 'Dado Faltante'
       }
     ]
@@ -380,40 +278,37 @@
         show: true
       },
 
-      // Annotation missing
+      // Annotation outlier
       annotations: {
         xaxis: missings.map(({x, borderColor, label_text}) => ({
           x, borderColor,
           strokeDashArray: 0,
+          offsetX: -8,
           label: {
             borderColor,
             orientation: 'horizontal',
-            text: label_text
+            text: label_text,
+            offsetX: -8,
           }
         }))
       },
 
       /**
       * Definição de cores
-      * [0] #2670E8 => Cor da linha padrão
       */
-      colors: ['#2670E8'],
+      colors: ['#86C7BD', '#2670E8'],
       series: [
         {
-          name: 'Categoria 1',
-          type: 'line',
-          data: line_missing_1
+          name: 'Coluna 1',
+          type: 'column',
+          data: column_missing_1
+        },
+        {
+          name: 'Coluna 2',
+          type: 'column',
+          data: column_missing_2
         }
       ],
-
-      /**
-      * Peso da borda
-      * 4 px para linhas 
-      */
-      stroke: {
-        width: 4,
-        curve: 'stepline',
-      },
       
       /**
       * Gráfico temporal
@@ -427,29 +322,110 @@
       yaxis: [
         {
           title: {
-            text: 'Categoria 1'
+            text: 'Titulo Eixo 1'
           },
-          seriesName: 'Categoria 1',
-        }       
+          seriesName: 'Coluna 1',
+        }    
       ],
 
       tooltip: {
         x: {
           show: false
-        }
-      },
-
-      legend: {
-        offsetY: 10,
-        markers: {
-          width: 24,
-          height: 6,
-          radius: 0
-        }
+        },
       },
     };
 
     var chart = new ApexCharts(document.querySelector('#chart-missing'), options_missing);
+
+    chart.render();
+  </script>
+  <script>
+    
+    function slide_array(arr, dis) {
+      let len = arr.length
+      let res = []
+      for(let i = 0; i < len; i++) res[(len + (i - dis)) % len] = arr[i]
+      return res
+    }
+
+    const column_default = [1062, 656, 871, 879, 1890, 985, 994, 920, 963, 983, 933, 972]
+    const column_multi_1 = slide_array(column_default, 2)
+    const column_multi_2 = slide_array(column_default, 5)
+    const column_multi_3 = slide_array(column_default, 8)
+    const column_multi_4 = slide_array(column_default, 0)
+ 
+    const options_multi = {
+      // Configuração Geral
+      chart: {
+        ...predef
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        show: true
+      },
+
+      // Configuração mediante a um gráfico
+      plotOptions: {
+        bar: {
+          columnWidth: '80%'
+        }
+      },
+
+      /**
+      * Definição de cores
+      */
+      colors: ['#86C7BD', '#2670E8', '#E368B2', '#FFCD07'],
+      series: [
+        {
+          name: 'Coluna 1',
+          type: 'column',
+          data: column_multi_1
+        },
+        {
+          name: 'Coluna 2',
+          type: 'column',
+          data: column_multi_2
+        },
+        {
+          name: 'Coluna 3',
+          type: 'column',
+          data: column_multi_3
+        },
+        {
+          name: 'Coluna 4',
+          type: 'column',
+          data: column_multi_4
+        }
+      ],
+      
+      /**
+      * Gráfico temporal
+      * Definindo eixo x como datetime para aceitar datas
+      */ 
+      xaxis: {
+        type: 'datetime',
+        categories: datas
+      },
+
+      yaxis: [
+        {
+          title: {
+            text: 'Titulo Eixo 1'
+          },
+          seriesName: 'Coluna 1',
+        }    
+      ],
+
+      tooltip: {
+        x: {
+          show: false
+        },
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector('#chart-multi'), options_multi);
 
     chart.render();
   </script>

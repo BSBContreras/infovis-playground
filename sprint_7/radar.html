@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Infovis</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="http://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='style.css'> -->
+  <!-- <script src='script.js'></script> -->
+  <style>
+    #slide-container {
+      width: 40%;
+    }
+
+    #slide-container>div {
+      margin: 16px 0;
+    }
+
+    .slider-label {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-family: Rawline, Arial, sans-serif;
+      font-weight: 700;
+      color: #2670E8
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      appearance: none;
+
+      width: 100%;
+      height: 4px;
+      background: #2670E8;
+      outline: none;
+      opacity: 0.5;
+
+      -webkit-transition: .1s;
+      transition: opacity .1s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      /* Override default look */
+      -webkit-appearance: none;
+      appearance: none;
+      opacity: 1;
+
+      /* Setting size */
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+
+      background: #2670E8;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      /* Setting size */
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+
+      background: #2670E8;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div id="slide-container"></div>
+    <div style="height: 50%; width: 50%;" id="chart"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+
+    const SEC = 6
+
+    // ._._._._.
+
+    const initial_data = [
+      {
+        min: "Density",
+        max: "Lightness",
+        value: Math.floor(SEC / 2)
+      },
+      {
+        min: "Multidimensionality",
+        max: "Unidimensionality",
+        value: Math.floor(SEC / 2)
+      },
+      {
+        min: "Originality",
+        max: "Familiarity",
+        value: Math.floor(SEC / 2)
+      },
+      {
+        min: "Novely",
+        max: "Redundancy",
+        value: Math.floor(SEC / 2)
+      },
+      {
+        min: "Figuration",
+        max: "Abstraction",
+        value: Math.floor(SEC / 2)
+      },
+      {
+        min: "Decoration",
+        max: "Functionality",
+        value: Math.floor(SEC / 2)
+      },
+    ]
+
+    const options = {
+      chart: {
+        type: 'radar',
+        fontFamily: 'Rawline, Arial, sans-serif'
+      },
+      fill: {
+        opacity: 0.5,
+        colors: ['#86C7BD']
+      },
+      stroke: {
+        width: 1,
+        colors: ['#36A191'],
+      },
+      plotOptions: {
+        radar: {
+          polygons: {
+            strokeColor: 'transparent',
+            connectorColors: '#2670E8',
+            strokeWidth: 0,
+          }
+        },
+      },
+      series: [{
+        name: 'Radar Series',
+        data: [...initial_data.map(data => data.value), ...initial_data.map(data => SEC - data.value)]
+      }],
+      xaxis: {
+        categories: [...initial_data.map(data => data.min), ...initial_data.map(data => data.max)],
+      },
+      yaxis: {
+        show: false,
+      },
+
+    }
+
+    const chart = new ApexCharts(document.querySelector('#chart'), options)
+    chart.render()
+
+    const createSliders = () => {
+      const container = document.querySelector("#slide-container")
+      return initial_data.map((slide_data, index) => {
+        const label = document.createElement("div")
+        label.setAttribute("class", "slider-label")
+        const min = document.createElement("span")
+        min.appendChild(document.createTextNode(slide_data.min))
+        const max = document.createElement("span")
+        max.appendChild(document.createTextNode(slide_data.max))
+        label.appendChild(max)
+        label.appendChild(min)
+        const slider = document.createElement("input")
+        slider.setAttribute("type", "range")
+        slider.setAttribute("min", 0)
+        slider.setAttribute("max", SEC)
+        slider.setAttribute("step", 1)
+        slider.setAttribute("class", "slider")
+        slider.setAttribute("value", slide_data.value)
+        slider.setAttribute("id", `slide-${index}`)
+        slider.oninput = function () {
+          const [series] = chart.series.w.config.series
+          series.data[index] = this.value
+          series.data[(index + series.data.length / 2) % series.data.length] = SEC - this.value
+          chart.updateSeries([series])
+        }
+        const slider_container = document.createElement("div")
+        slider_container.appendChild(label)
+        slider_container.appendChild(slider)
+        container.appendChild(slider_container)
+        return slider
+      })
+    }
+
+    createSliders()
+
+  </script>
+</body>
+
+</html>
